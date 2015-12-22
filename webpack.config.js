@@ -1,9 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
+var config = require('./src/config');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:5000',
+    'webpack-dev-server/client?http://localhost:' + config.PORT,
     'webpack/hot/dev-server',
     './src/client'
   ],
