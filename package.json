@@ -37,6 +37,8 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "css-loader": "^0.23.1",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.1",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
     "react-transform-hmr": "^1.0.1",
