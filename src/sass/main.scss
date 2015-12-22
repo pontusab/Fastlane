@@ -1,0 +1,513 @@
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+.regular-button,
+button {
+  font-family: light;
+  letter-spacing: 1px;
+  cursor: pointer;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+@font-face {
+  font-family: light;
+  src: url('/assets/fonts/light.woff') format('woff');
+}
+
+@font-face {
+  font-family: ultra;
+  src: url('/assets/fonts/ultra.woff') format('woff');
+}
+
+@-webkit-keyframes pulse {
+  from {
+    -webkit-transform: scale(1.0);
+    opacity: 0.75;
+  }
+  50% {
+    -webkit-transform: scale(1.1);
+    opacity: 1.0;
+  }
+  to {
+    -webkit-transform: scale(1.0);
+    opacity: 0.75;
+  }
+}
+
+@-webkit-keyframes load {
+  from {
+    width: 0%
+  }
+  to {
+    width: 90%;
+    opacity: 1.0;
+  }
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    transform: scale(1);
+    opacity: 0.0;
+  }
+  to {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+
+body {
+  font-family: light;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  position: relative;
+  width: 340px;
+  height: 495px;
+  background: #0C111A;
+  overflow: hidden;
+}
+
+.start video {
+  position: absolute;
+  left: -80px;
+  top: -40px;
+  width: calc(100% + 160px);
+  height: 100%;
+}
+
+.auth {
+  width: 340px;
+  height: 495px;
+
+  .splash {
+    transform: scale(1.2);
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 0;
+  }
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 200px;
+}
+
+.logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+.jawbone {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+}
+
+.auth-actions {
+  transform: translate3d(0, 0, 0);
+  animation-name: slideUp;
+  animation-duration: 0.65s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+.auth-actions a {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  width: 50%;
+  height: 65px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 65px;
+}
+
+.auth-actions .login {
+  background: #000;
+}
+
+.auth-actions .register {
+  background: #2CB2C6;
+}
+
+.options-form {
+  margin-bottom: 20px;
+}
+
+.car-options {
+  width: 320px;
+  height: 30px;
+  padding: 15px 10px;
+  text-align: center;
+
+  .cars {
+    height: 23px;
+    overflow: hidden;
+  }
+
+  .is-active {
+    button {
+      color: #fff;
+    }
+  }
+}
+
+.car-options li {
+  display: inline-block;
+}
+
+.car-options button {
+  border: 0;
+  background: none;
+  font-size: 14px;
+  color: #767676;
+}
+
+
+.row {
+  position: relative;
+  width: 310px;
+  margin: 0 auto;
+}
+
+.row input {
+  outline: none;
+  height: 45px;
+  border-radius: 2px;
+  border: 1px solid #EDEDED;
+  color: #767676;
+  font-size: 14px;
+  font-family: light;
+  text-align: center;
+  width: 310px;
+  padding: 0 10px 0 35px;
+}
+
+.row:before {
+  content: '';
+  width: 11px;
+  height: 11px;
+  border-radius: 11px;
+  display: block;
+  position: absolute;
+  left: 13px;
+  top: 18px;
+  background: #6DBA18;
+  z-index: 2;
+}
+
+.from {
+  z-index: 2;
+}
+
+.to {
+  transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
+  top: -22px;
+  opacity: 0.96;
+  z-index: 1;
+
+  input {
+    cursor: pointer;
+  }
+}
+
+.is-expanded {
+  .from:after {
+    content: '';
+    height: 37px;
+    width: 1px;
+    background: #EDEDED;
+    position: absolute;
+    left: 18px;
+    top: 25px;
+    z-index: 1;
+  }
+  .to {
+    opacity: 1;
+    top: -1px;
+
+    input {
+      cursor: text;
+    }
+  }
+}
+
+.row.to:before {
+  background: #C1152A;
+}
+
+.countdown {
+  padding-bottom: 35px;
+  position: relative;
+  line-height: 50px;
+  font-family: ultra;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+  width: 180px;
+  height: 180px;
+}
+
+.countdown .border {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 180px;
+  border-radius: 180px;
+  border: 2px solid #2CB2C6;
+}
+
+.border.pulse {
+  -webkit-animation-name: pulse;
+  -webkit-animation-duration: 3.5s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.countdown span {
+  display: block;
+}
+
+.countdown .time {
+  padding-top: 48px;
+  font-size: 76px;
+}
+
+.countdown .text {
+  font-size: 24px;
+}
+
+.estimate {
+  text-align: center;
+  font-size: 15px;
+  color: #6E7676;
+  font-family: ultra;
+}
+
+.regular-button {
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  border: none;
+  display: block;
+  width: 100%;
+  height: 65px;
+  color: #C9C7CD;
+  background: #000;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 65px;
+}
+
+.requesting {
+  font-size: 22px;
+  font-family: ultra;
+  text-align: center;
+  color: #fff;
+  padding: 20px 0;
+  display: block;
+  margin-bottom: 86px;
+}
+
+.requesting span {
+  display: block;
+  padding-bottom: 20px;
+}
+
+.loading {
+  height: 2px;
+  background: #2CB2C6;
+  margin: 0 auto;
+  -webkit-animation-name: load;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.information {
+  position: relative;
+  padding: 20px;
+}
+
+.information .text {
+  line-height: 25px;
+  padding-left: 10px;
+  font-family: ultra;
+  display: inline-block;
+  color: #fff;
+  vertical-align: top;
+  text-transform: uppercase;
+}
+
+.information .text span {
+  display: block;
+}
+
+.driver img,
+.car img {
+  width: 55px;
+  height: 55px;
+  border-radius: 55px;
+  display: inline-block;
+}
+
+.driver {
+  padding-bottom: 15px;
+}
+
+.number,
+.rating {
+  font-size: 13px;
+}
+
+.rating img {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 3px;
+  left: 7px;
+}
+
+.information .text .rating-text {
+  display: inline-block;
+}
+
+.map {
+  margin-top: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.arriving {
+  line-height: 20px;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  background: #000;
+  border-radius: 75px;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.arriving span {
+  display: block;
+}
+
+.arriving .text {
+  padding: 0;
+}
+
+.arriving .time {
+  padding-top: 20px;
+  font-size: 30px;
+  color: #fff;
+}
+
+.arriving .text {
+  font-size: 12px;
+}
+
+.arriving .border {
+  animation: spinner 2s linear infinite;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 65px;
+  height: 65px;
+  border-radius: 65px;
+  border: 1px solid #2CB2C6;
+}
+
+.arriving .border:before {
+  content: '';
+  width: 11px;
+  height: 10px;
+  border-radius: 10px;
+  background: #252525;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+.arriving .border:after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  border-radius: 4px;
+  background: #2CB2C6;
+  position: absolute;
+  top: 6px;
+  left: 7px;
+}
+
+.geosuggest ul {
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  top: 45px;
+  left: 0;
+  width: 310px;
+  background: #fff;
+  z-index: 20;
+  list-style: none;
+  border-radius: 0 0 2px 2px;
+}
+
+.geosuggest li {
+  position: relative;
+  padding: 10px;
+  font-size: 12px;
+  font-family: light;
+  color: #767676;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    padding-left: 20px;
+  }
+
+  &.geosuggest-item--active {
+    background: #EDEDED;
+    padding-left: 20px;
+  }
+}
+
+.geosuggest__suggests--hidden {
+  display: none;
+}
