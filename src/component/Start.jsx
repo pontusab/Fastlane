@@ -26,7 +26,7 @@ export default class Start extends React.Component {
           :
             <div className="auth">
               <img className="splash" src="assets/img/splash.png" />
-              <a className="logo" href="http://get.uber.com">
+              <a className="logo" href={uber.generateRegisterUrl()}>
                 <img src="assets/img/logo.svg" alt="Uber" />
               </a>
 

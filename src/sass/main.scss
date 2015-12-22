@@ -511,3 +511,36 @@ a {
 .geosuggest__suggests--hidden {
   display: none;
 }
+
+
+
+
+
+
+.app-enter {
+  opacity: 0.01;
+}
+
+.enter-enter.enter-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.enter-leave {
+  opacity: 1;
+}
+
+.enter-leave.enter-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+.app-appear {
+  opacity: 0.01;
+}
+
+.app-appear.app-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}

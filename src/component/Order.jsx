@@ -4,6 +4,11 @@ import Estimate from './Estimate.jsx';
 import Button from './Button.jsx';
 
 export default class Order extends React.Component {
+  componentDidMount() {
+    setTimeout(() => {
+      window.location.replace('/confirm');
+    }, 5000);
+  }
   render() {
     return (
       <div className="order">
