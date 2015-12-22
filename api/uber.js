@@ -9,6 +9,7 @@ const {
   SESSION_SECRET,
   REDIRECT_URI,
   CLIENT_SECRET,
+  UBER_AUTH,
   UBER_API,
 } = config;
 
@@ -23,20 +24,17 @@ export default {
       code: code,
     });
 
-    return Promise.resolve(fetch(`${UBER_API}/token?${query}`, {
+    return Promise.resolve(fetch(`${UBER_AUTH}/token?${query}`, {
       method: 'POST',
     }).then((res) => res.json()));
   },
 
 
-  getRequest(method, token) {
-    return Promise.resolve(fetch(`${UBER_API}/${method}`, {
-      method: 'POST',
+  getRequest(method, token, query) {
+    return Promise.resolve(fetch(`${UBER_API}/${method}?${qs.stringify(query)}`, {
       headers: {
         Authorization: 'Bearer ' + token
       }
     }).then((res) => res.json()));
   }
-
-
 }
