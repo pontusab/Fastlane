@@ -7,9 +7,9 @@
 // export default {
 //   save(data) {
 //     Parse.initialize(PARSE_APP, PARSE_KEY);
-//     var TestObject = Parse.Object.extend("TestObject");
-//     var testObject = new TestObject();
+//     const Users = Parse.Object.extend('Users');
+//     const userDb = new Users();
 
-//     return Promise.resolve(testObject.save({foo: "bar"})).then((user) => user);
+//     return Promise.resolve(userDb.save(data)).then((user) => user);
 //   }
 // }
