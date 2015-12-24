@@ -11,5 +11,5 @@ new WebpackDevServer(webpack(wConfig), {
   historyApiFallback: true
 }).listen(PORT, 'localhost', (err) => {
   if (err) console.log(err);
-  console.log(`server started on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });
