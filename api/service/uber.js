@@ -1,7 +1,7 @@
 import Promise from 'bluebird';
 import qs from 'query-string';
 import fetch from 'node-fetch';
-import config from '../src/config';
+import config from '../../src/config';
 
 const {
   API_PORT,
@@ -9,8 +9,8 @@ const {
   SESSION_SECRET,
   REDIRECT_URI,
   CLIENT_SECRET,
-  UBER_AUTH,
-  UBER_API,
+  UBER_AUTH_ENDPOINT,
+  UBER_API_ENDPOINT,
 } = config;
 
 export default {
@@ -24,17 +24,23 @@ export default {
       code: code,
     });
 
-    return Promise.resolve(fetch(`${UBER_AUTH}/token?${query}`, {
+    return Promise.resolve(fetch(`${UBER_AUTH_ENDPOINT}/v2/token?${query}`, {
       method: 'POST',
     }).then((res) => res.json()));
   },
 
 
-  getRequest(method, token, query) {
-    return Promise.resolve(fetch(`${UBER_API}/${method}?${qs.stringify(query)}`, {
+  getRequest(request, query) {
+    const { token } = query;
+    console.log(`${UBER_API_ENDPOINT}/${request}?${qs.stringify(query)}`);
+    return Promise.resolve(fetch(`${UBER_API_ENDPOINT}/${request}?${qs.stringify(query)}`, {
       headers: {
-        Authorization: 'Bearer ' + token
+        Authorization: `Bearer ${token}`,
       }
     }).then((res) => res.json()));
-  }
+  },
+
+  postRequest(method, token, query) {
+
+  },
 }
