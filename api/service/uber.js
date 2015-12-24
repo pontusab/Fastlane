@@ -1,7 +1,6 @@
 import Promise from 'bluebird';
 import qs from 'query-string';
 import fetch from 'node-fetch';
-import Db from './db';
 import config from '../../src/config';
 
 const {
