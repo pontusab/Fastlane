@@ -30,13 +30,16 @@ export default {
   },
 
 
-  getRequest(request, query) {
-    const { token } = query;
+  request(request, params, method = 'GET') {
+    const { token } = params;
 
-    return Promise.resolve(fetch(`${UBER_API_ENDPOINT}/${request}?${qs.stringify(query)}`, {
+    return Promise.resolve(fetch(`${UBER_API_ENDPOINT}/${request}?${qs.stringify(params)}`, {
       headers: {
         Authorization: `Bearer ${token}`,
-      }
+        'Content-Type': 'application/json',
+      },
+      method: method,
+      json: params,
     }).then((res) => res.json()));
   },
 }

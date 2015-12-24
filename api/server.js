@@ -3,7 +3,7 @@ import uber from './service/uber';
 import Db from './service/db';
 import config from '../src/config';
 
-const { API_PORT, MY_TOKEN } = config;
+const { API_PORT } = config;
 
 const api = express();
 
@@ -28,7 +28,17 @@ api.post('/auth', async (req, res) => {
  * @param {longitude}
  */
 api.get('/products', async (req, res) => {
-  return res.json(await uber.getRequest('v1/products', req.query));
+  return res.json(await uber.request('v1/products', req.query));
+});
+
+/**
+ * History
+ * GET /v1.2/history
+ * @param {limit}
+ * @param {offset}
+ */
+api.get('/history', async (req, res) => {
+  return res.json(await uber.request('v1.2/history', req.query));
 });
 
 /**
@@ -40,7 +50,7 @@ api.get('/products', async (req, res) => {
  * @param {product_id?}
  */
 api.get('/estimates/time', async (req, res) => {
-  return res.json(await uber.getRequest('v1/estimates/time', req.query));
+  return res.json(await uber.request('v1/estimates/time', req.query));
 });
 
 /**
@@ -52,7 +62,7 @@ api.get('/estimates/time', async (req, res) => {
  * @param {end_longitude}
  */
 api.get('/estimates/price', async (req, res) => {
-  return res.json(await uber.getRequest('v1/estimates/price', req.query));
+  return res.json(await uber.request('v1/estimates/price', req.query));
 });
 
 /**
@@ -61,7 +71,7 @@ api.get('/estimates/price', async (req, res) => {
  * @param {request_id}
  */
 api.get('/request/:request_id/map', async (req, res) => {
-  return res.json(await uber.getRequest(`v1/requests/${req.params.request_id}/map`, req.query));
+  return res.json(await uber.request(`v1/requests/${req.params.request_id}/map`, req.query));
 });
 
 /**
@@ -79,7 +89,7 @@ api.get('/request/:request_id/map', async (req, res) => {
  * @param {surge_confirmation_id?}
  */
 api.post('/request', async (req, res) => {
-  return res.json(await uber.getRequest(`v1/requests`, req.query));
+  return res.json(await uber.request(`v1/requests`, req.query));
 });
 
 /**
@@ -88,7 +98,16 @@ api.post('/request', async (req, res) => {
  * @param {request_id}
  */
 api.get('/request/:request_id', async (req, res) => {
-  return res.json(await uber.getRequest(`v1/requests/${req.params.request_id}`, req.query));
+  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query));
+});
+
+/**
+ * Ride request - Details
+ * DELETE /v1/request
+ * @param {request_id}
+ */
+api.delete('/request/:request_id', async (req, res) => {
+  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query));
 });
 
 const server = api.listen(API_PORT, () => {
