@@ -169,13 +169,17 @@ a {
 
 .car-options {
   width: 320px;
-  height: 30px;
+  height: 17px;
   padding: 15px 10px;
   text-align: center;
+  overflow: hidden;
+  margin-bottom: 15px;
 
   .cars {
-    height: 23px;
-    overflow: hidden;
+    height: 47px;
+    width: 320px;
+    overflow-y: hidden;
+    white-space: nowrap;
   }
 
   .is-active {
