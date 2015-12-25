@@ -1,12 +1,11 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
-import wConfig from '../webpack.config';
-import config from './config';
+import config from '../webpack.config';
 
-const { PORT } = config;
+const { PORT } = process.env;
 
-new WebpackDevServer(webpack(wConfig), {
-  publicPath: wConfig.output.publicPath,
+new WebpackDevServer(webpack(config), {
+  publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
   stats: {

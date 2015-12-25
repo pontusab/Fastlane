@@ -2,6 +2,10 @@ import React from 'react';
 import cx from 'classnames';
 
 export default class CarOptions extends React.Component {
+  static propTypes = {
+    products: React.PropTypes.array.isRequired,
+  };
+
   state = {
     selected: 0,
   }
@@ -19,10 +23,10 @@ export default class CarOptions extends React.Component {
               const active = this.state.selected === index;
 
               return (
-                <li key={product.product_id} className={cx({'is-active': active})} onClick={(evt) => ::this.handleClick(evt, index)}>
+                <li key={product.product_id} className={cx({ 'is-active': active })} onClick={(evt) => ::this.handleClick(evt, index)}>
                   <button>{product.display_name}</button>
                 </li>
-              )
+              );
             })
           }
         </ul>

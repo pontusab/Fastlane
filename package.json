@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "build": "./node_modules/.bin/webpack --config webpack.config.production.js"
+    "build": "./node_modules/.bin/webpack --config webpack.config.production.js",
+    "lint": "npm run lint:jscs && npm run lint:eslint",
+    "lint:jscs": "./node_modules/jscs/bin/jscs src/**/*.js src/**/*.jsx index.js",
+    "lint:eslint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js"
   },
   "author": "Pontus Abrahamsson",
   "homepage": "http://fastlaneapp.co",
@@ -40,12 +43,21 @@
     "css-loader": "^0.23.1",
     "electron-packager": "^5.2.0",
     "electron-prebuilt": "^0.36.1",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^2.1.1",
+    "eslint-plugin-react": "^3.13.0",
+    "jscs": "^2.7.0",
     "json-loader": "^0.5.4",
     "node-sass": "^3.4.2",
+    "pre-commit": "^1.1.2",
     "react-transform-hmr": "^1.0.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
 }

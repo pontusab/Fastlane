@@ -1,9 +1,8 @@
 import express from 'express';
 import uber from './service/uber';
 import Db from './service/db';
-import config from '../src/config';
 
-const { API_PORT } = config;
+const { API_PORT } = process.env;
 
 const api = express();
 

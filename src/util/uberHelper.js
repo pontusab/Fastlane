@@ -1,7 +1,6 @@
 import qs from 'query-string';
-import config from '../config.json';
 
-const { CLIENT_ID, SESSION_SECRET, REDIRECT_URI, CLIENT_SECRET } = config;
+const { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } = process.env;
 
 export default {
   generateAuthUrl() {
@@ -17,5 +16,5 @@ export default {
 
   generateRegisterUrl() {
     return `https://m.uber.com/sign-up?client_id=${CLIENT_SECRET}`;
-  }
+  },
 };

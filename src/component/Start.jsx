@@ -3,23 +3,19 @@ import uber from '../util/uberHelper';
 
 export default class Start extends React.Component {
   state = {
-    video: false,
-  }
-
-  componentDidMount() {
-    this.setState({ video: !localStorage.getItem('video') });
+    playVideo: !localStorage.getItem('playVideo'),
   }
 
   onEnded() {
-    localStorage.setItem('video', false);
-    this.setState({ video: false });
+    localStorage.setItem('playVideo', false);
+    this.setState({ playVideo: false });
   }
 
   render() {
     return (
       <div className="start">
         {
-          this.state.video ?
+          this.state.playVideo ?
             <video controls="" autoPlay name="media" onEnded={::this.onEnded}>
               <source src="assets/video/video.webm" type="video/webm" />
             </video>
@@ -31,7 +27,7 @@ export default class Start extends React.Component {
               </a>
 
               <div className="auth-actions jawbone">
-                <a href={uber.generateAuthUrl()} className="login">Sign in</a>
+                <a href={uber.generateAuthUrl()} target="_blank" className="login">Sign in</a>
                 <a href={uber.generateRegisterUrl()} target="_blank" className="register">Register</a>
               </div>
             </div>

@@ -9,6 +9,7 @@ export default class Order extends React.Component {
       window.location.replace('#confirm');
     }, 5000);
   }
+
   render() {
     return (
       <div className="order">
