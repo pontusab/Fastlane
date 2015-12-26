@@ -1,6 +1,7 @@
 import qs from 'query-string';
+import config from '../config';
 
-const { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } = process.env;
+const { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } = config;
 
 export default {
   generateAuthUrl() {

@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Connect to store
+// Load en route
 export default class Confirm extends React.Component {
   render() {
     return (

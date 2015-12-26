@@ -3,9 +3,8 @@ var path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:' + process.env.PORT,
-    'webpack/hot/dev-server',
-    './src/client'
+    'webpack-hot-middleware/client?path=http://localhost:'+ process.env.PORT +'/__webpack_hmr',
+    './src/client',
   ],
   output: {
     path: path.join(__dirname, 'public'),
@@ -17,6 +16,7 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],

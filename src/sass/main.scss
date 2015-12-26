@@ -218,8 +218,9 @@ a {
   font-size: 14px;
   font-family: light;
   text-align: center;
-  width: 310px;
+  width: 100%;
   padding: 0 10px 0 35px;
+  box-sizing: border-box;
 }
 
 .row:before {

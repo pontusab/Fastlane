@@ -6,6 +6,8 @@ import Estimate from './Estimate.jsx';
 import Button from './Button.jsx';
 import Loading from './Loading.jsx';
 
+// Connect to store
+// Load products
 export default class Search extends React.Component {
   static propTypes = {
     products: React.PropTypes.array.isRequired,

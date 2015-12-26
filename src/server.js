@@ -1,17 +1,28 @@
+import path from 'path';
+import express from 'express';
 import webpack from 'webpack';
-import WebpackDevServer from 'webpack-dev-server';
 import config from '../webpack.config';
+
+const server = express();
+const compiler = webpack(config);
 
 const { PORT } = process.env;
 
-new WebpackDevServer(webpack(config), {
+server.use(require('webpack-dev-middleware')(compiler, {
   publicPath: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
   stats: {
     colors: true,
   },
-}).listen(PORT, 'localhost', (err) => {
-  if (err) console.log(err);
-  console.log(`Server started on port ${PORT}`);
+}));
+
+server.use(require('webpack-hot-middleware')(compiler));
+server.use('/static', express.static('public'));
+server.use('/assets', express.static('assets'));
+
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+server.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });

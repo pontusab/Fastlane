@@ -1,6 +1,8 @@
 import React from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
 
+// Connect to store
+// Load user
 export default class App extends React.Component {
   static propTypes = {
     children: React.PropTypes.element.isRequired,
