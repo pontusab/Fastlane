@@ -1,5 +1,5 @@
 import qs from 'query-string';
-import config from '../config';
+import config from '../../config.json';
 
 const { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } = config;
 

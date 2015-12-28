@@ -17,7 +17,6 @@
     "babel-runtime": "^6.3.19",
     "bluebird": "^3.1.1",
     "classnames": "^2.2.1",
-    "dotenv": "^1.2.0",
     "express": "^4.13.3",
     "history": "^1.17.0",
     "menubar": "^3.0.0",

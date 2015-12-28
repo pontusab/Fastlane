@@ -1,15 +1,16 @@
 import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
-import config from '../webpack.config';
+import settings from '../webpack.config';
+import config from '../config';
 
 const server = express();
-const compiler = webpack(config);
+const compiler = webpack(settings);
 
-const { PORT } = process.env;
+const { PORT } = config;
 
 server.use(require('webpack-dev-middleware')(compiler, {
-  publicPath: config.output.publicPath,
+  publicPath: settings.output.publicPath,
   stats: {
     colors: true,
   },
