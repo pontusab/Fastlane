@@ -1,3 +1,10 @@
-export function isAuthenticated(params) {
-  console.log(params);
+export function handleAccess(params) {
+  const user = localStorage.getItem('user');
+  const start = params.location.pathname !== '/';
+
+  if (user && !start) {
+    return window.location.replace('/search');
+  } else if (!user && start) {
+    return window.location.replace('/?unauthorized=true');
+  }
 }

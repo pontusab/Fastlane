@@ -123,11 +123,13 @@ a {
   position: absolute;
   left: 0;
   right: 0;
+  width: 107px;
+  margin: 0 auto;
   top: 200px;
 }
 
 .logo img {
-  display: block;
+  display: inline-block;
   margin: 0 auto;
 }
 
