@@ -1,6 +1,7 @@
 import Promise from 'bluebird';
 import qs from 'query-string';
 import fetch from 'node-fetch';
+import config from '../../config.json';
 
 const {
   API_PORT,
@@ -10,7 +11,7 @@ const {
   CLIENT_SECRET,
   UBER_AUTH_ENDPOINT,
   UBER_API_ENDPOINT,
-} = process.env;
+} = config;
 
 export default {
   authenticate(code) {
