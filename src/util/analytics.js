@@ -1,14 +1,12 @@
-// import Parse from 'parse';
-// import config from '../../config.json';
+import Parse from 'parse';
+import config from '../../config.json';
 
-// const { PARSE_APP, PARSE_KEY } = config;
+const { PARSE_APP, PARSE_KEY } = config;
 
-// Parse.initialize(PARSE_APP, PARSE_KEY);
-// analytics.track('AppOpened');
+Parse.initialize(PARSE_APP, PARSE_KEY);
 
-// export default {
-//   track( name, dimensions, callback ) {
-//     Parse.Analytics.track( name, dimensions )
-//       .then( callback );
-//   },
-// }
+export default {
+  track( name, dimensions ) {
+    Parse.Analytics.track(name, dimensions);
+  },
+}

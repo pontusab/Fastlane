@@ -1,7 +1,6 @@
 import express from 'express';
 import config from '../config';
 import uber from './service/uber-proxy';
-import Db from './service/db';
 
 const { API_PORT, DOMAIN } = config;
 
