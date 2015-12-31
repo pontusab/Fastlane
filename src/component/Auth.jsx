@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import qs from 'query-string';
 import authenticate from '../action/authenticate';
+import Loading from './Loading.jsx';
 
 function select(state) {
   return {
@@ -16,10 +17,8 @@ export default class Auth extends React.Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      const { code } = qs.parse(window.location.search);
-      if (code) this.props.dispatch(authenticate(code));
-    }, 5000);
+    const { code } = qs.parse(window.location.search);
+    if (code) this.props.dispatch(authenticate(code));
   }
 
   componentWillReceiveProps({ user }) {
@@ -33,7 +32,7 @@ export default class Auth extends React.Component {
   render() {
     return (
       <div className="auth">
-        <div className="loading-spinner"></div>
+        <Loading />
       </div>
     );
   }
