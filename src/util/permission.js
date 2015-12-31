@@ -1,4 +1,4 @@
-export function handleAccess(params) {
+export function handlePermission(params) {
   const user = localStorage.getItem('user');
   const start = params.location.pathname !== '/';
 

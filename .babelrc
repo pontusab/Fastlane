@@ -2,6 +2,7 @@
   "presets": ["es2015", "stage-0", "react"],
   "plugins": [
     "transform-runtime",
+    "babel-plugin-transform-decorators-legacy",
     ["react-transform", {
       "transforms": [{
         "transform" : "react-transform-hmr",

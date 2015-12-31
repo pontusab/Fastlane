@@ -5,10 +5,10 @@ import Start from './component/Start.jsx';
 import Search from './component/Search.jsx';
 import Order from './component/Order.jsx';
 import Confirm from './component/Confirm.jsx';
-import { handleAccess } from './util/authenticate';
+import { handlePermission } from './util/permission';
 
 export default (
-  <Route path="/" component={App} onEnter={handleAccess}>
+  <Route path="/" component={App} onEnter={handlePermission}>
     <IndexRoute component={Start} />
     <Route path="/search" component={Search} />
     <Route path="/order" component={Order} />
