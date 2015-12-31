@@ -1,6 +1,6 @@
 ## Fastlane - Uber from your menubar
 
-![ScreenShot](https://raw.githubusercontent.com/pontusab/Fastlane/blob/master/design/Fastlane-fullscreen.png)
+![ScreenShot](https://github.com/pontusab/Fastlane/blob/master/design/Fastlane-fullscreen.png)
 
 ## Installation
 
