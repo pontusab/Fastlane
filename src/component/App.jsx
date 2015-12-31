@@ -9,7 +9,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     const { pathname } = window.location;
-    Analytics.track('PAGE_VIEW', {target: pathname });
+    Analytics.track('PAGE_VIEW', { target: pathname });
   }
 
   render() {
