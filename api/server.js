@@ -32,16 +32,6 @@ api.get('/products', async (req, res) => {
 });
 
 /**
- * History
- * GET /v1.2/history
- * @param {limit}
- * @param {offset}
- */
-api.get('/history', async (req, res) => {
-  return res.json(await uber.request('v1.2/history', req.query));
-});
-
-/**
  * Time estimates
  * GET /v1/estimates/time
  * @param {start_latitude}
