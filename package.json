@@ -24,7 +24,6 @@
     "parse": "^1.6.13",
     "query-string": "^3.0.0",
     "react": "^0.14.3",
-    "react-addons-css-transition-group": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-geosuggest": "^1.13.0",
     "react-redux": "^4.0.5",

@@ -1,5 +1,4 @@
 import React from 'react';
-import TransitionGroup from 'react-addons-css-transition-group';
 import Analytics from '../util/analytics';
 
 export default class App extends React.Component {
@@ -8,25 +7,14 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    const { pathname } = window.location;
-    Analytics.track('PAGE_VIEW', { target: pathname });
+    Analytics.track('PAGEVIEW', { target: window.location.pathname });
   }
 
   render() {
     return (
-      <TransitionGroup
-        transitionAppear
-        transitionName="app"
-        transitionAppearTimeout={0}
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}
-      >
-
-        <div className="app">
-          {React.cloneElement(this.props.children)}
-        </div>
-
-      </TransitionGroup>
+      <div className="app">
+        {React.cloneElement(this.props.children)}
+      </div>
     );
   }
 }
