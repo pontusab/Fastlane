@@ -548,3 +548,36 @@ a {
   opacity: 1;
   transition: opacity .5s ease-in;
 }
+
+.loading-spinner {
+  animation: spinner 1.4s linear infinite;
+  position: relative;
+  top: 50%;
+  margin: -50px auto auto auto;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  border: 1px solid #2CB2C6;
+
+  &:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    background: #0C111A;
+    position: absolute;
+    top: 15px;
+    left: 4px;
+  }
+
+  &:after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: #2CB2C6;
+    position: absolute;
+    top: 18px;
+    left: 7px;
+  }
+}

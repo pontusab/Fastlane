@@ -1,14 +1,15 @@
 import express from 'express';
 import config from '../config';
-import uber from './service/uber';
+import uber from './service/uber-proxy';
 import Db from './service/db';
 
-const { API_PORT } = config;
+const { API_PORT, DOMAIN } = config;
 
 const api = express();
 
 api.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', DOMAIN);
+  res.header('Access-Control-Allow-Credentials', true);
   next();
 });
 
