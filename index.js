@@ -5,4 +5,4 @@ require('babel-register');
 require('./src/server.js');
 
 // start api server
-require('./api/server.js');
+require('./api/api.js');

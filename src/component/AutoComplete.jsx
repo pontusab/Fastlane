@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
+import products from '../action/products';
 
+@connect()
 export default class AutoComplete extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+  };
+
   state = {
     expanded: false,
-    from: 'Hornsgatan 65A, Stockholm',
+    from: null,
     to: null,
   }
 
@@ -19,6 +26,7 @@ export default class AutoComplete extends React.Component {
   }
 
   getFromData(data) {
+    this.props.dispatch(products(data));
     this.setState({ from: data });
     findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
   }

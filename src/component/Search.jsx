@@ -1,44 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CarOptions from './CarOptions.jsx';
 import AutoComplete from './AutoComplete.jsx';
 import CountDown from './CountDown.jsx';
 import Estimate from './Estimate.jsx';
 import Button from './Button.jsx';
 import Loading from './Loading.jsx';
+import products from '../action/products';
 
-// Connect to store
-// Get location
-// Load products
-// Load estimates
+function select(state) {
+  return {
+    products: state.products,
+  };
+}
+
+@connect(select)
 export default class Search extends React.Component {
   static propTypes = {
-    products: React.PropTypes.array.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
   };
 
-  static defaultProps = {
-    products: [
-      {
-        display_name: 'uberX',
-        product_id: 'a1111c8c-c720-46c3-8534-2fcdd730040d',
-      },
-      {
-        display_name: 'uberXL',
-        product_id: '821415d8-3bd5-4e27-9604-194e4359a449',
-      },
-      {
-        display_name: 'UberBLACK',
-        product_id: 'd4abaae7-f4d6-4152-91cc-77523e8165a4',
-      },
-      {
-        display_name: 'UberSUV',
-        product_id: '8920cb5e-51a4-4fa4-acdf-dd86c5e18ae0',
-      },
-      {
-        display_name: 'uberTAXI',
-        product_id: '3ab64887-4842-4c8e-9780-ccecd3a0391d',
-      },
-    ],
-  };
+  componentDidMount() {
+    this.props.dispatch(products());
+  }
 
   render() {
     return (

@@ -523,9 +523,10 @@ a {
 
 .loading-spinner {
   animation: spinner 1.4s linear infinite;
-  position: relative;
+  position: absolute;
   top: 50%;
-  margin: -50px auto auto auto;
+  left: 50%;
+  margin: -50px auto auto -50px;
   width: 100px;
   height: 100px;
   border-radius: 100px;

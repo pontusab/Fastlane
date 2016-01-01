@@ -1,6 +1,7 @@
 import express from 'express';
 import config from '../config';
-import uber from './service/uber-proxy';
+import uber from './service/uber';
+import geolocation from './service/geolocation';
 
 const { API_PORT, DOMAIN } = config;
 
@@ -10,6 +11,14 @@ api.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', DOMAIN);
   res.header('Access-Control-Allow-Credentials', true);
   next();
+});
+
+/**
+ * Geolocation
+ * GET /geolocation
+ */
+api.get('/geolocation', async (req, res) => {
+  return res.json(await geolocation.lookup());
 });
 
 /**
