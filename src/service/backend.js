@@ -2,7 +2,7 @@
 import Promise from 'bluebird';
 import fetch from 'node-fetch';
 import qs from 'query-string';
-import getUser from '../util/getUser';
+import getToken from '../util/getToken';
 import config from '../../config.json';
 
 const { API_ENDPOINT } = config;
@@ -20,15 +20,19 @@ export default {
   },
 
   products({ lat, lng }) {
-    const { access_token } = getUser();
+    const { access_token } = getToken();
 
     const query = qs.stringify({
-      latitude: lat,
-      longitude: lng,
+      start_latitude: lat,
+      start_longitude: lng,
       token: access_token,
     });
 
-    return Promise.resolve(fetch(`${API_ENDPOINT}/products?${query}`)
+    return Promise.resolve(fetch(`${API_ENDPOINT}/estimates/time?${query}`)
       .then((res) => res.json()));
   },
+
+  prices(startLocation) {
+    console.log(startLocation)
+  }
 };

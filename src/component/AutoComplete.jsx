@@ -4,6 +4,7 @@ import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
 import products from '../action/products';
+import prices from '../action/prices';
 
 @connect()
 export default class AutoComplete extends React.Component {
@@ -22,6 +23,7 @@ export default class AutoComplete extends React.Component {
   }
 
   getToData(data) {
+    this.props.dispatch(prices(data));
     this.setState({ to: data });
   }
 

@@ -11,6 +11,8 @@ import products from '../action/products';
 function select(state) {
   return {
     products: state.products,
+    selected: state.selected,
+    prices: state.prices,
   };
 }
 
@@ -19,6 +21,7 @@ export default class Search extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     products: React.PropTypes.array.isRequired,
+    prices: React.PropTypes.array.isRequired,
   };
 
   componentDidMount() {
@@ -26,15 +29,16 @@ export default class Search extends React.Component {
   }
 
   render() {
+    const product = this.props.products[this.props.selected];
+
     return (
       <div className="search">
         {
           this.props.products.length ?
             <div>
-              <CarOptions products={this.props.products} />
+              <CarOptions products={this.props.products} selected={this.props.selected} />
               <AutoComplete />
-              <CountDown minutes={1} pulse />
-              {/* <Estimate priceRange="4-5" currency="USD" /> */}
+              <CountDown time={product.estimate} pulse />
 
               <Button path="/order" text="Request" />
             </div>
