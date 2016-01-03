@@ -18,6 +18,7 @@ function select(state) {
 export default class Search extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
+    products: React.PropTypes.array.isRequired,
   };
 
   componentDidMount() {
@@ -28,17 +29,17 @@ export default class Search extends React.Component {
     return (
       <div className="search">
         {
-          this.props.products ?
+          this.props.products.length ?
             <div>
               <CarOptions products={this.props.products} />
               <AutoComplete />
               <CountDown minutes={1} pulse />
-              <Estimate priceRange="4-5" currency="USD" />
+              {/* <Estimate priceRange="4-5" currency="USD" /> */}
 
               <Button path="/order" text="Request" />
             </div>
           :
-            <Loading />
+          <Loading />
         }
       </div>
     );

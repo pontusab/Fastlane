@@ -1,7 +1,8 @@
+/* eslint camelcase: 0 */
 import Promise from 'bluebird';
 import fetch from 'node-fetch';
 import qs from 'query-string';
-import authToken from '../util/authToken';
+import getUser from '../util/getUser';
 import config from '../../config.json';
 
 const { API_ENDPOINT } = config;
@@ -19,10 +20,12 @@ export default {
   },
 
   products({ lat, lng }) {
+    const { access_token } = getUser();
+
     const query = qs.stringify({
       latitude: lat,
       longitude: lng,
-      token: authToken(),
+      token: access_token,
     });
 
     return Promise.resolve(fetch(`${API_ENDPOINT}/products?${query}`)
