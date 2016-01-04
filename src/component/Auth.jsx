@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import qs from 'query-string';
-import authenticate from '../action/authenticate';
+import authenticate from '../action/authenticateAction';
 import Loading from './Loading.jsx';
 
 function select(state) {

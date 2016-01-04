@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
-import products from '../action/products';
-import prices from '../action/prices';
+import products from '../action/productsAction';
 
 @connect()
 export default class AutoComplete extends React.Component {
@@ -14,23 +13,15 @@ export default class AutoComplete extends React.Component {
 
   state = {
     expanded: false,
-    from: null,
-    to: null,
   }
 
   componentDidMount() {
     findDOMNode(this.refs.fromInput.refs.geosuggestInput).focus();
   }
 
-  getToData(data) {
-    this.props.dispatch(prices(data));
-    this.setState({ to: data });
-  }
-
-  getFromData(data) {
-    this.props.dispatch(products(data));
-    this.setState({ from: data });
+  getStartLocation(data) {
     findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
+    this.props.dispatch(products(data));
   }
 
   handleClick() {
@@ -47,18 +38,15 @@ export default class AutoComplete extends React.Component {
         <div className="row from">
           <Geosuggest
             ref="fromInput"
-            autoActivateFirstSuggest="true"
             placeholder="Enter pickup location"
-            onSuggestSelect={::this.getFromData}
+            onSuggestSelect={::this.getStartLocation}
           />
         </div>
 
         <div className="row to">
           <Geosuggest
             ref="toInput"
-            autoActivateFirstSuggest="true"
             placeholder="Enter destination"
-            onSuggestSelect={::this.getToData}
             onFocus={::this.handleClick}
           />
         </div>

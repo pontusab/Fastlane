@@ -32,7 +32,6 @@ export default {
       .then((res) => res.json()));
   },
 
-  prices(startLocation) {
-    console.log(startLocation)
-  }
+  prices() {
+  },
 };
