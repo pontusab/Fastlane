@@ -19,12 +19,13 @@ export default {
       .then((res) => res.json()));
   },
 
-  products({ lat, lng }) {
+  products(location) {
     const { access_token } = getToken();
+    const { lat: start_latitude, lng: start_longitude } = location;
 
     const query = qs.stringify({
-      start_latitude: lat,
-      start_longitude: lng,
+      start_latitude,
+      start_longitude,
       token: access_token,
     });
 

@@ -22,6 +22,10 @@ export default class AutoComplete extends React.Component {
     findDOMNode(this.refs.fromInput.refs.geosuggestInput).focus();
   }
 
+  componentWillUpdate(nextProps, { start, end }) {
+    if (start && end) this.props.dispatch(priceAction(start, end));
+  }
+
   getStartLocation(location) {
     findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
     this.setState({ start: location });
@@ -34,10 +38,6 @@ export default class AutoComplete extends React.Component {
 
   handleClick() {
     this.setState({ expanded: true });
-  }
-
-  componentWillUpdate(nextProps, { start, end }) {
-    if( start && end ) this.props.dispatch(priceAction(start, end));
   }
 
   render() {
