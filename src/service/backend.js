@@ -32,6 +32,20 @@ export default {
       .then((res) => res.json()));
   },
 
-  prices() {
+  prices(start, end) {
+    const { access_token } = getToken();
+    const { location: { lat: start_latitude, lng: start_longitude } } = start;
+    const { location: { lat: end_latitude, lng: end_longitude } } = end;
+
+    const query = qs.stringify({
+      start_latitude,
+      start_longitude,
+      end_latitude,
+      end_longitude,
+      token: access_token,
+    });
+
+    return Promise.resolve(fetch(`${API_ENDPOINT}/estimates/price?${query}`)
+      .then((res) => res.json()));
   },
 };

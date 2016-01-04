@@ -6,7 +6,7 @@ import CountDown from './CountDown.jsx';
 import Estimate from './Estimate.jsx';
 import Button from './Button.jsx';
 import Loading from './Loading.jsx';
-import products from '../action/productsAction';
+import productAction from '../action/productAction';
 
 function select(state) {
   return {
@@ -22,25 +22,25 @@ export default class Search extends React.Component {
   };
 
   componentDidMount() {
-    this.props.dispatch(products());
+    this.props.dispatch(productAction());
   }
 
   render() {
     const products = this.props.products.data;
     const selectedId = this.props.products.selected;
-    const selectedProduct = products[selectedId];
+    const estimates = this.props.products.prices[selectedId];
 
     return (
       <div className="search">
         {
           products.length ?
             <div>
-              <SelectProduct products={products} selected={selectedId} />
+              <SelectProduct {...this.props} />
               <AutoComplete />
-              <CountDown time={selectedProduct.estimate} pulse />
-              <Estimate priceRange="4-6" currency="USD" />
+              <CountDown time={products[selectedId].estimate} pulse />
+              { estimates && <Estimate estimate={estimates.estimate} /> }
 
-              <Button path="/order" text={`Request ${selectedProduct.display_name}`} />
+              <Button path="/order" text={`Request ${products[selectedId].display_name}`} />
             </div>
           :
           <Loading />

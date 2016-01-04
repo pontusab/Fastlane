@@ -8,6 +8,6 @@ const initialState = {
 
 export default handleActions({
   GET_PRODUCTS: (products, { payload }) => ({ ...products, data: payload }),
-  GET_PRICES: (prices, { payload }) => ({ ...prices, prices: payload }),
+  GET_PRICES: (prices, { payload }) => ({ ...prices, prices: payload.prices }),
   GET_SELECTED: (selected, { payload }) => ({ ...selected, selected: payload }),
 }, initialState);

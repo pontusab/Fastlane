@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
-import products from '../action/productsAction';
+import productAction from '../action/productAction';
+import priceAction from '../action/priceAction';
 
 @connect()
 export default class AutoComplete extends React.Component {
@@ -13,19 +14,30 @@ export default class AutoComplete extends React.Component {
 
   state = {
     expanded: false,
+    start: false,
+    end: false,
   }
 
   componentDidMount() {
     findDOMNode(this.refs.fromInput.refs.geosuggestInput).focus();
   }
 
-  getStartLocation(data) {
+  getStartLocation(location) {
     findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
-    this.props.dispatch(products(data));
+    this.setState({ start: location });
+    this.props.dispatch(productAction(location));
+  }
+
+  getEndLocation(location) {
+    this.setState({ end: location });
   }
 
   handleClick() {
     this.setState({ expanded: true });
+  }
+
+  componentWillUpdate(nextProps, { start, end }) {
+    if( start && end ) this.props.dispatch(priceAction(start, end));
   }
 
   render() {
@@ -47,6 +59,7 @@ export default class AutoComplete extends React.Component {
           <Geosuggest
             ref="toInput"
             placeholder="Enter destination"
+            onSuggestSelect={::this.getEndLocation}
             onFocus={::this.handleClick}
           />
         </div>
