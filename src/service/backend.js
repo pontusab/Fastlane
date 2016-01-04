@@ -1,22 +1,22 @@
 /* eslint camelcase: 0 */
-import Promise from 'bluebird';
 import fetch from 'node-fetch';
 import qs from 'query-string';
 import getToken from '../util/getToken';
+import getResponse from '../util/getResponse';
 import config from '../../config.json';
 
 const { API_ENDPOINT } = config;
 
 export default {
   authenticate(code) {
-    return Promise.resolve(fetch(`${API_ENDPOINT}/auth?code=${code}`, {
+    return fetch(`${API_ENDPOINT}/auth?code=${code}`, {
       method: 'POST',
-    }).then((res) => res.json()));
+    }).then(getResponse);
   },
 
   lookup() {
-    return Promise.resolve(fetch(`${API_ENDPOINT}/geolocation`)
-      .then((res) => res.json()));
+    return fetch(`${API_ENDPOINT}/geolocation`)
+      .then(getResponse);
   },
 
   products(location) {
@@ -29,8 +29,8 @@ export default {
       token: access_token,
     });
 
-    return Promise.resolve(fetch(`${API_ENDPOINT}/estimates/time?${query}`)
-      .then((res) => res.json()));
+    return fetch(`${API_ENDPOINT}/estimates/time?${query}`)
+      .then(getResponse);
   },
 
   prices(start, end) {
@@ -46,7 +46,7 @@ export default {
       token: access_token,
     });
 
-    return Promise.resolve(fetch(`${API_ENDPOINT}/estimates/price?${query}`)
-      .then((res) => res.json()));
+    return fetch(`${API_ENDPOINT}/estimates/price?${query}`)
+      .then(getResponse);
   },
 };
