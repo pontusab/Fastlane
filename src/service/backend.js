@@ -1,11 +1,11 @@
 /* eslint camelcase: 0 */
 import fetch from 'node-fetch';
 import qs from 'query-string';
-import getToken from '../util/getToken';
 import getResponse from '../util/getResponse';
 import config from '../../config.json';
 
 const { API_ENDPOINT } = config;
+const { access_token } = JSON.parse(localStorage.getItem('user'));
 
 export default {
   authenticate(code) {
@@ -20,7 +20,6 @@ export default {
   },
 
   products(location) {
-    const { access_token } = getToken();
     const { lat: start_latitude, lng: start_longitude } = location;
 
     const query = qs.stringify({
@@ -34,7 +33,6 @@ export default {
   },
 
   prices(start, end) {
-    const { access_token } = getToken();
     const { location: { lat: start_latitude, lng: start_longitude } } = start;
     const { location: { lat: end_latitude, lng: end_longitude } } = end;
 
