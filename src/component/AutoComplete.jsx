@@ -13,7 +13,6 @@ export default class AutoComplete extends React.Component {
   };
 
   state = {
-    expanded: false,
     start: false,
     end: false,
   }
@@ -26,24 +25,22 @@ export default class AutoComplete extends React.Component {
     if (start && end) this.props.dispatch(priceAction(start, end));
   }
 
-  getStartLocation(location) {
-    findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
+  setStartLocation(location) {
     this.setState({ start: location });
     this.props.dispatch(productAction(location));
+    findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
   }
 
-  getEndLocation(location) {
+  setEndLocation(location) {
     this.setState({ end: location });
-  }
-
-  handleClick() {
-    this.setState({ expanded: true });
   }
 
   render() {
     const classes = cx('options-form', {
-      'is-expanded': this.state.expanded,
+      'is-expanded': this.state.start,
     });
+
+    const { location } = this.state.start;
 
     return (
       <form className={classes} autoComplete="off">
@@ -51,17 +48,19 @@ export default class AutoComplete extends React.Component {
           <Geosuggest
             ref="fromInput"
             placeholder="Enter pickup location"
-            onSuggestSelect={::this.getStartLocation}
-          />
+            autoActivateFirstSuggest="true"
+            onSuggestSelect={::this.setStartLocation} />
         </div>
 
         <div className="row to">
           <Geosuggest
             ref="toInput"
             placeholder="Enter destination"
-            onSuggestSelect={::this.getEndLocation}
-            onFocus={::this.handleClick}
-          />
+            autoActivateFirstSuggest="true"
+            disabled={!this.state.start}
+            onSuggestSelect={::this.setEndLocation}
+            location={new google.maps.LatLng(location)}
+            radius="20" />
         </div>
       </form>
     );
