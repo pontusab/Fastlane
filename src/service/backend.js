@@ -5,7 +5,7 @@ import getResponse from '../util/getResponse';
 import config from '../../config.json';
 
 const { API_ENDPOINT } = config;
-const { access_token } = JSON.parse(localStorage.getItem('user'));
+const user = JSON.parse(localStorage.getItem('user'));
 
 export default {
   authenticate(code) {
@@ -25,7 +25,7 @@ export default {
     const query = qs.stringify({
       start_latitude,
       start_longitude,
-      token: access_token,
+      token: user.access_token,
     });
 
     return fetch(`${API_ENDPOINT}/estimates/time?${query}`)
@@ -41,7 +41,7 @@ export default {
       start_longitude,
       end_latitude,
       end_longitude,
-      token: access_token,
+      token: user.access_token,
     });
 
     return fetch(`${API_ENDPOINT}/estimates/price?${query}`)

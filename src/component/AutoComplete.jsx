@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { findDOMNode } from 'react-dom';
@@ -49,7 +51,8 @@ export default class AutoComplete extends React.Component {
             ref="fromInput"
             placeholder="Enter pickup location"
             autoActivateFirstSuggest="true"
-            onSuggestSelect={::this.setStartLocation} />
+            onSuggestSelect={::this.setStartLocation}
+          />
         </div>
 
         <div className="row to">
@@ -60,7 +63,8 @@ export default class AutoComplete extends React.Component {
             disabled={!this.state.start}
             onSuggestSelect={::this.setEndLocation}
             location={new google.maps.LatLng(location)}
-            radius="20" />
+            radius="20"
+          />
         </div>
       </form>
     );

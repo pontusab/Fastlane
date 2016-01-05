@@ -77,9 +77,9 @@ button {
 @-webkit-keyframes loadingPulse {
   0% { -webkit-transform: scale(0); opacity: 0; }
   20% { -webkit-transform: scale(0); opacity: 0; }
-  40% { -webkit-transform: scale(.2); opacity: .4; }
-  60% { -webkit-transform: scale(.4); opacity: .6; }
-  100% { -webkit-transform: scale(.6); opacity: 0; }
+  40% { -webkit-transform: scale(.3); opacity: .4; }
+  60% { -webkit-transform: scale(.5); opacity: .6; }
+  100% { -webkit-transform: scale(.7); opacity: 0; }
 }
 
 body {
@@ -538,7 +538,7 @@ a {
     width: 250px;
     height: 250px;
     border-radius: 250px;
-    box-shadow: inset 0 0 150px rgba(44, 178, 198, 0.3);
+    box-shadow: inset 0 0 150px rgba(44, 178, 198, 0.6);
     margin: -25px;
   }
 
