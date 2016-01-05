@@ -63,7 +63,7 @@ button {
   }
 }
 
-@keyframes fadeIn {
+@keyframes scaleIn {
   from {
     transform: scale(1);
     opacity: 0.0;
@@ -73,7 +73,6 @@ button {
     opacity: 1;
   }
 }
-
 
 body {
   font-family: light;
@@ -109,7 +108,7 @@ a {
 
   .splash {
     transform: scale(1.2);
-    animation-name: fadeIn;
+    animation-name: scaleIn;
     animation-duration: 1.5s;
     animation-timing-function: ease;
     width: 100%;

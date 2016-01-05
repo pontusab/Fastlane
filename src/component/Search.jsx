@@ -11,6 +11,7 @@ import productAction from '../action/productAction';
 function select(state) {
   return {
     products: state.products,
+    location: state.location,
   };
 }
 
@@ -19,10 +20,29 @@ export default class Search extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     products: React.PropTypes.object.isRequired,
+    location: React.PropTypes.object,
   };
 
-  componentDidMount() {
-    this.props.dispatch(productAction());
+  componentWillReceiveProps(nextProps) {
+    clearTimeout(this.timeout);
+    this.startPoll();
+  }
+
+  componentWillMount() {
+    this.dataFetch()
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
+  dataFetch() {
+    console.log(this.props.location);
+    this.props.dispatch(productAction(this.props.location))
+  }
+
+  startPoll() {
+    this.timeout = setTimeout(() => this.dataFetch(), 5000);
   }
 
   render() {
