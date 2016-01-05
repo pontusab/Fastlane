@@ -23,13 +23,13 @@ export default class Search extends React.Component {
     location: React.PropTypes.object,
   };
 
-  componentWillReceiveProps(nextProps) {
-    clearTimeout(this.timeout);
-    this.startPoll();
+  componentWillMount() {
+    this.dataFetch();
   }
 
-  componentWillMount() {
-    this.dataFetch()
+  componentWillReceiveProps() {
+    clearTimeout(this.timeout);
+    this.startPoll();
   }
 
   componentWillUnmount() {
@@ -37,12 +37,11 @@ export default class Search extends React.Component {
   }
 
   dataFetch() {
-    console.log(this.props.location);
-    this.props.dispatch(productAction(this.props.location))
+    this.props.dispatch(productAction(this.props.location));
   }
 
   startPoll() {
-    this.timeout = setTimeout(() => this.dataFetch(), 5000);
+    this.timeout = setTimeout(() => this.dataFetch(), 10000);
   }
 
   render() {

@@ -14,7 +14,7 @@ export default class CountDown extends React.Component {
 
     return (
       <div className="countdown">
-        <span className="time">{Math.floor(this.props.time / 60)}</span>
+        <span className="time">{Math.round(this.props.time / 60)}</span>
         <span className="text">Min</span>
 
         <div className={classes}></div>
