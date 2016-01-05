@@ -12,15 +12,6 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/public/'
   },
-  resolve: {
-    extensions: ['', '.js', '.jsx']
-  },
-  devtool: 'eval-source-map',
-  plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ],
   module: {
     loaders: [
       { test: /\.jsx?$/, loaders: ['babel'], include: path.join(__dirname, 'src') },
@@ -28,7 +19,15 @@ module.exports = {
       { test: /\.json$/, loader: 'json' },
       { test: /\.woff2?($|\?)/, loader: 'url?limit=10000&mimetype=application/font-woff' },
     ]
-  }
+  },
+  resolve: {
+    extensions: ['', '.js']
+  },
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+  ]
 };
 
 

@@ -5,7 +5,6 @@ import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
 import productAction from '../action/productAction';
 import priceAction from '../action/priceAction';
-import locationAction from '../action/locationAction';
 
 @connect()
 export default class AutoComplete extends React.Component {
@@ -31,7 +30,6 @@ export default class AutoComplete extends React.Component {
     findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
     this.setState({ start: location });
     this.props.dispatch(productAction(location));
-    this.props.dispatch(locationAction(location));
   }
 
   getEndLocation(location) {

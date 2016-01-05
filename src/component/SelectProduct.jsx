@@ -7,7 +7,8 @@ import selectedAction from '../action/selectedAction';
 export default class SelectProduct extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
-    products: React.PropTypes.object.isRequired,
+    products: React.PropTypes.array.isRequired,
+    selected: React.PropTypes.number.isRequired,
   };
 
   handleClick(index) {
@@ -19,10 +20,10 @@ export default class SelectProduct extends React.Component {
       <nav className="car-options">
         <ul className="cars">
           {
-            this.props.products.data.map((product, index) => {
+            this.props.products.map((product, index) => {
               return (
                 <li key={product.product_id}
-                  className={cx({ 'is-active': this.props.products.selected === index })}
+                  className={cx({ 'is-active': this.props.selected === index })}
                   onClick={() => ::this.handleClick(index)}
                 >
                   <button>{product.display_name}</button>

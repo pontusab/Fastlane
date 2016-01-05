@@ -11,7 +11,6 @@ import productAction from '../action/productAction';
 function select(state) {
   return {
     products: state.products,
-    location: state.location,
   };
 }
 
@@ -20,32 +19,14 @@ export default class Search extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     products: React.PropTypes.object.isRequired,
-    location: React.PropTypes.object,
   };
 
   componentWillMount() {
-    this.dataFetch();
-  }
-
-  componentWillReceiveProps() {
-    clearTimeout(this.timeout);
-    this.startPoll();
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
-
-  dataFetch() {
-    this.props.dispatch(productAction(this.props.location));
-  }
-
-  startPoll() {
-    this.timeout = setTimeout(() => this.dataFetch(), 10000);
+    this.props.dispatch(productAction());
   }
 
   render() {
-    const products = this.props.products.data;
+    const products = this.props.products.cars;
     const selectedId = this.props.products.selected;
     const estimates = this.props.products.prices[selectedId];
 
@@ -54,7 +35,7 @@ export default class Search extends React.Component {
         {
           products.length ?
             <div>
-              <SelectProduct {...this.props} />
+              <SelectProduct products={products} selected={selectedId} />
               <AutoComplete />
               <CountDown time={products[selectedId].estimate} pulse />
               { estimates && <Estimate estimate={estimates.estimate} /> }
