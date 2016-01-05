@@ -26,6 +26,7 @@ export default class Search extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     const products = this.props.products.cars;
     const selectedId = this.props.products.selected;
     const estimates = this.props.products.prices[selectedId];
