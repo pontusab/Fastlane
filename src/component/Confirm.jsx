@@ -1,7 +1,29 @@
 import React from 'react';
 
-// Connect to store
-// Load en route
+// {
+//    "status": "accepted",
+//    "driver": {
+//       "phone_number": "(555)555-5555",
+//       "rating": 5,
+//       "picture_url": "https:\/\/d1w2poirtb3as9.cloudfront.net\/img.jpeg",
+//       "name": "Bob"
+//    },
+//    "eta": 4,
+//    "location": {
+//       "latitude": 37.776033,
+//       "longitude": -122.418143,
+//       "bearing": 33
+//    },
+//    "vehicle": {
+//       "make": "Bugatti",
+//       "model": "Veyron",
+//       "license_plate": "I<3Uber",
+//       "picture_url": "https:\/\/d1w2poirtb3as9.cloudfront.net\/car.jpeg",
+//    },
+//    "surge_multiplier":  1.0,
+//    "request_id": "b2205127-a334-4df4-b1ba-fc9f28f56c96"
+// }
+
 export default class Confirm extends React.Component {
   render() {
     return (

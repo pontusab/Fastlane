@@ -23,7 +23,7 @@ export default class Order extends React.Component {
         </div>
 
         <CountDown time={255} />
-        <Estimate estimate="4-5 USD" />
+        <Estimate estimate="137-170 kr" />
 
         <Button path="/search" text="Cancel" />
       </div>
