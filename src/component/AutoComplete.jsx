@@ -17,7 +17,7 @@ export default class AutoComplete extends React.Component {
   state = {
     start: false,
     end: false,
-  }
+  };
 
   componentDidMount() {
     findDOMNode(this.refs.fromInput.refs.geosuggestInput).focus();

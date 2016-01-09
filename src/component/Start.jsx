@@ -4,7 +4,7 @@ import uber from '../util/uberHelper';
 export default class Start extends React.Component {
   state = {
     playVideo: !localStorage.getItem('playVideo'),
-  }
+  };
 
   onEnded() {
     localStorage.setItem('playVideo', false);
@@ -27,8 +27,17 @@ export default class Start extends React.Component {
               </a>
 
               <div className="auth-actions jawbone">
-                <a href={uber.generateAuthUrl()} className="login">Sign in</a>
-                <a href={uber.generateRegisterUrl()} target="_blank" className="register">Register</a>
+                <a href={uber.generateAuthUrl()}
+                  target="_blank"
+                  className="login">
+                  Sign in
+                </a>
+
+                <a href={uber.generateRegisterUrl()}
+                  target="_blank"
+                  className="register">
+                  Register
+                </a>
               </div>
             </div>
         }

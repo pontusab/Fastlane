@@ -28,6 +28,7 @@ export default class Search extends React.Component {
   render() {
     const products = this.props.products.cars;
     const selectedId = this.props.products.selected;
+    const selectedProduct = products[selectedId];
     const estimates = this.props.products.prices[selectedId];
 
     return (
@@ -37,10 +38,10 @@ export default class Search extends React.Component {
             <div>
               <SelectProduct products={products} selected={selectedId} />
               <AutoComplete />
-              <CountDown time={products[selectedId].estimate} pulse />
+              <CountDown time={selectedProduct.estimate} pulse />
               { estimates && <Estimate estimate={estimates.estimate} /> }
 
-              <Button path="/order" text={`Request ${products[selectedId].display_name}`} />
+              <Button path="/order" text={`Request ${selectedProduct.display_name}`} />
             </div>
           :
           <Loading />

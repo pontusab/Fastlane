@@ -3,6 +3,7 @@ import CountDown from './CountDown.jsx';
 import Estimate from './Estimate.jsx';
 import Button from './Button.jsx';
 
+// Poll request
 // {
 //    "request_id": "852b8fdd-4369-4659-9628-e122662ad257",
 //    "status": "processing",

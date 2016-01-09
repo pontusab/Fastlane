@@ -88,7 +88,7 @@ api.get('/request/:request_id/map', async (req, res) => {
  * @param {surge_confirmation_id?}
  */
 api.post('/request', async (req, res) => {
-  return res.json(await uber.request(`v1/requests`, req.query));
+  return res.json(await uber.request(`v1/sandbox/requests`, req.query, 'POST'));
 });
 
 /**
