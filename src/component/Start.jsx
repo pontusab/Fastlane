@@ -6,6 +6,12 @@ export default class Start extends React.Component {
     playVideo: !localStorage.getItem('playVideo'),
   };
 
+  componentDidMount() {
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    if (user) return window.location.replace('search');
+  }
+
   onEnded() {
     localStorage.setItem('playVideo', false);
     this.setState({ playVideo: false });
