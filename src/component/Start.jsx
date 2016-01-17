@@ -29,7 +29,6 @@ export default class Start extends React.Component {
               <div className="auth-actions jawbone">
                 <a
                   href={uber.generateAuthUrl()}
-                  target="_blank"
                   className="login"
                 >
                   Sign in
@@ -37,7 +36,6 @@ export default class Start extends React.Component {
 
                 <a
                   href={uber.generateRegisterUrl()}
-                  target="_blank"
                   className="register"
                 >
                   Register

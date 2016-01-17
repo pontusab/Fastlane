@@ -1,0 +1,32 @@
+<style type="text/css">
+  body {
+    width: 340px;
+    height: 495px;
+    background: #0C111A;
+    padding: 0;
+    margin: 0;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+
+<webview
+  id="uber"
+  src="http://localhost:5555"
+  minwidth="340"
+  minheight="495"
+  partition="persist:fastlane"
+  useragent="Fastlane Mac App">
+</webview>
+
+<script>
+  var app = document.getElementById('uber');
+  app.addEventListener("dom-ready", function() {
+    app.insertCSS('.btn--link, .text-uber-white, p.text--center, .btn--facebook {display:none!important;}');
+
+    app.openDevTools();
+  });
+
+</script>
