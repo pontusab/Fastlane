@@ -6,7 +6,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "node index.js",
+    "start": "webpack --config webpack.prod.js && node index.js",
     "lint": "npm run lint:jscs && npm run lint:eslint",
     "lint:jscs": "./node_modules/jscs/bin/jscs src/**/*.js src/**/*.jsx index.js",
     "lint:eslint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js",
@@ -25,7 +25,7 @@
     "query-string": "^3.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "react-geosuggest": "^1.14.0",
+    "react-geosuggest": "^1.15.1",
     "react-redux": "^4.0.6",
     "react-router": "^2.0.0-rc5",
     "redux": "^3.0.5",
