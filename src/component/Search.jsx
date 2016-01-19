@@ -21,7 +21,7 @@ export default class Search extends React.Component {
     products: React.PropTypes.object.isRequired,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(productAction());
   }
 
