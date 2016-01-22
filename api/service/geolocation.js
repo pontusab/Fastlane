@@ -12,4 +12,4 @@ export default {
     return Promise.resolve(fetch(`https://maps.googleapis.com/maps/api/browserlocation/json?${query}`)
       .then((res) => res.json()));
   },
-}
+};

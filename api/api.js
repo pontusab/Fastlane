@@ -109,6 +109,6 @@ api.delete('/request/:request_id', async (req, res) => {
   return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query));
 });
 
-const server = api.listen(API_PORT, () => {
+api.listen(API_PORT, () => {
   console.log(`Api started on port ${API_PORT}`);
 });

@@ -4,9 +4,7 @@ import fetch from 'node-fetch';
 import config from '../../config.json';
 
 const {
-  API_PORT,
   CLIENT_ID,
-  SESSION_SECRET,
   REDIRECT_URI,
   CLIENT_SECRET,
   UBER_AUTH_ENDPOINT,
@@ -21,7 +19,7 @@ export default {
       grant_type: 'authorization_code',
       redirect_uri: REDIRECT_URI,
       client_id: CLIENT_ID,
-      code: code,
+      code,
     });
 
     return Promise.resolve(fetch(`${UBER_AUTH_ENDPOINT}/v2/token?${query}`, {
@@ -38,8 +36,8 @@ export default {
         Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
-      method: method,
+      method,
       json: params,
     }).then((res) => res.json()));
   },
-}
+};
