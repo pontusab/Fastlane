@@ -6,7 +6,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start": "webpack --config webpack.prod.js && node index.js",
+    "start:dev": "webpack --config webpack.config.js && node index.js",
+    "start": "node index.js",
     "lint": "npm run lint:jscs && npm run lint:eslint",
     "lint:jscs": "./node_modules/jscs/bin/jscs src/**/*.js src/**/*.jsx index.js",
     "lint:eslint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js",
