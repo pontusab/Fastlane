@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import cx from 'classnames';
 import selectedAction from '../action/selectedAction';
 
 @connect()
@@ -21,12 +20,15 @@ export default class SelectProduct extends React.Component {
         <ul className="cars">
           {
             this.props.products.map((product, index) => {
+              const selected = this.props.selected === index ? true : false;
+
               return (
-                <li key={product.product_id}
-                  className={cx({ 'is-active': this.props.selected === index })}
-                  onClick={() => ::this.handleClick(index)}
-                >
-                  <button>{product.display_name}</button>
+                <li key={product.product_id}>
+                  <input type="radio" id={product.display_name} checked={selected} name="product" />
+
+                  <label htmlFor={product.display_name} onClick={() => ::this.handleClick(index)}>
+                    {product.display_name}
+                  </label>
                 </li>
               );
             })

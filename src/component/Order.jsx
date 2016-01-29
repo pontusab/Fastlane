@@ -1,32 +1,37 @@
 import React from 'react';
-import CountDown from './CountDown.jsx';
-import Estimate from './Estimate.jsx';
-import Button from './Button.jsx';
+import { connect } from 'react-redux';
+import Form from './Form.jsx';
+import Loading from './Loading.jsx';
+import productAction from '../action/productAction';
 
-// Poll request
-// {
-//    "request_id": "852b8fdd-4369-4659-9628-e122662ad257",
-//    "status": "processing",
-//    "vehicle": null,
-//    "driver": null,
-//    "location": null,
-//    "eta": 5,
-//    "surge_multiplier": null
-// }
+function select(state) {
+  return {
+    products: state.products,
+  };
+}
 
-export default class Order extends React.Component {
+@connect(select)
+export default class Search extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    products: React.PropTypes.object.isRequired,
+  };
+
+  componentDidMount() {
+    this.props.dispatch(productAction());
+  }
+
   render() {
+    const products = this.props.products.cars;
+
     return (
       <div className="order">
-        <div className="requesting">
-          <span>Requesting</span>
-          <div className="loading"></div>
-        </div>
-
-        <CountDown time={255} />
-        <Estimate estimate="137-170 kr" />
-
-        <Button path="/search" text="Cancel" />
+        {
+          products.length ?
+            <Form {...this.props} />
+          :
+          <Loading />
+        }
       </div>
     );
   }

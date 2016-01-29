@@ -9,7 +9,7 @@ export default class Start extends React.Component {
   componentDidMount() {
     const user = JSON.parse(localStorage.getItem('user'));
 
-    if (user) return window.location.replace('search');
+    if (user) return window.location.replace('order');
   }
 
   onEnded() {

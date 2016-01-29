@@ -45,10 +45,11 @@ export default class AutoComplete extends React.Component {
     const { location } = this.state.start;
 
     return (
-      <form className={classes} autoComplete="off">
+      <div className={classes}>
         <div className="row from">
           <Geosuggest
             ref="fromInput"
+            required
             placeholder="Enter pickup location"
             autoActivateFirstSuggest="true"
             onSuggestSelect={::this.setStartLocation}
@@ -66,7 +67,7 @@ export default class AutoComplete extends React.Component {
             radius="20"
           />
         </div>
-      </form>
+      </div>
     );
   }
 }

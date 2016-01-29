@@ -14,7 +14,6 @@ button {
   -webkit-font-smoothing: antialiased;
 }
 
-
 @font-face {
   font-family: light;
   src: url('/assets/fonts/light.woff') format('woff');
@@ -191,24 +190,25 @@ a {
     white-space: nowrap;
   }
 
-  .is-active {
-    button {
-      color: #fff;
-    }
+  input[type="radio"] {
+    display: none;
+  }
+
+  input[type="radio"]:checked + label {
+    color: #fff;
+  }
+
+  label {
+    font-size: 14px;
+    color: #767676;
+    cursor: pointer;
   }
 }
 
 .car-options li {
   display: inline-block;
+  padding: 0 5px;
 }
-
-.car-options button {
-  border: 0;
-  background: none;
-  font-size: 14px;
-  color: #767676;
-}
-
 
 .row {
   position: relative;
@@ -329,6 +329,7 @@ a {
 }
 
 .regular-button {
+  border: 0;
   padding: 0;
   margin: 0;
   font-size: 16px;
@@ -343,7 +344,7 @@ a {
   line-height: 65px;
 }
 
-.requesting {
+.progress {
   font-size: 22px;
   font-family: ultra;
   text-align: center;
@@ -353,7 +354,7 @@ a {
   margin-bottom: 74px;
 }
 
-.requesting span {
+.progress span {
   display: block;
   padding-bottom: 20px;
 }
