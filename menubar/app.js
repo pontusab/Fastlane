@@ -9,7 +9,7 @@ const Tray = electron.Tray;
 console.log(Tray);
 
 menubar({
-  icon: path.join(__dirname, 'Icon@2x.png'),
+  icon: path.join(__dirname, '/icons/Icon@2x.png'),
   // preloadWindow: true,
   transparent: true,
   height: 525,
