@@ -1,10 +1,9 @@
 const webpack = require('webpack');
-const config = require('./config');
 const path = require('path');
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?path=http://localhost:' + config.PORT + '/__webpack_hmr',
+    'webpack-hot-middleware/client?path=http://localhost:5555/__webpack_hmr',
     './src/client',
   ],
   output: {
