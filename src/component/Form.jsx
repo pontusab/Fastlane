@@ -11,6 +11,7 @@ export default class Form extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
+    console.log('submit');
   }
 
   render() {

@@ -10,9 +10,8 @@ export default class Start extends React.Component {
 
   render() {
     return (
-      <div className="start">
         <div className="auth">
-          <img className="splash" src="assets/img/splash.png" />
+          <div className="splash"></div>
           <a className="logo" href={uber.generateRegisterUrl()}>
             <img src="assets/img/logo.svg" alt="Uber" />
           </a>
@@ -22,7 +21,6 @@ export default class Start extends React.Component {
             <a href={uber.generateRegisterUrl()} className="register">Register</a>
           </div>
         </div>
-      </div>
     );
   }
 }

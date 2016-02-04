@@ -65,11 +65,11 @@ button {
 @keyframes scaleIn {
   from {
     transform: scale(1);
-    opacity: 0.0;
+    opacity: 0;
   }
   to {
     transform: scale(1.2);
-    opacity: 1;
+    opacity: 0.3;
   }
 }
 
@@ -113,6 +113,8 @@ a {
   height: 495px;
 
   .splash {
+    width: 340px;
+    height: 495px;
     transform: scale(1.2);
     animation-name: scaleIn;
     animation-duration: 1.5s;
@@ -121,6 +123,10 @@ a {
     height: 100%;
     position: relative;
     z-index: 0;
+    background: url('/assets/img/atoms-city2.gif') no-repeat;
+    background-size: 495px;
+    opacity: 0.3;
+    -webkit-filter: grayscale(100%);
   }
 }
 
@@ -128,12 +134,13 @@ a {
   position: absolute;
   left: 0;
   right: 0;
-  width: 107px;
+  width: 80px;
   margin: 0 auto;
   top: 200px;
 }
 
 .logo img {
+  width: 80px;
   display: inline-block;
   margin: 0 auto;
 }
@@ -422,6 +429,12 @@ a {
   overflow: hidden;
 }
 
+.map-frame {
+  height: 260px;
+  border: none;
+  background: #000;
+}
+
 .arriving {
   line-height: 20px;
   position: absolute;
@@ -470,7 +483,7 @@ a {
   width: 11px;
   height: 10px;
   border-radius: 10px;
-  background: #252525;
+  background: #000;
   position: absolute;
   top: 4px;
   left: 4px;
