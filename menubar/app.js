@@ -3,7 +3,7 @@ const path = require('path');
 
 menubar({
   icon: path.join(__dirname, '/icons/Icon@2x.png'),
-  // preloadWindow: true,
+  preloadWindow: true,
   transparent: true,
   height: 525,
   width: 340,

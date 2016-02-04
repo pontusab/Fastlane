@@ -1,3 +1,10 @@
+<!--
+For now Fastlane need to be run in a webwiew
+because Uber Api can only authorize users with callbacks
+and surge also need the callback id to confirme the
+rate limit. This is not optimal but it works for now...
+-->
+
 <style type="text/css">
   body {
     width: 340px;
@@ -21,8 +28,17 @@
     border-width: 18px;
     margin-left: -18px;
   }
+
+  .back {
+    cursor: pointer;
+    position: fixed;
+    top: 38px;
+    left: 20px;
+    color: #fff;
+  }
 </style>
 
+<!-- <a class="back" href="http://localhost:5555">X</a> -->
 
 <webview
   id="uber"
@@ -35,23 +51,17 @@
 
 <script>
   var app = document.getElementById('uber');
-  var hide = [
-    '.btn--link',
-    '.text-uber-white',
-    'p.text--center',
-    '.btn--facebook',
-  ];
 
-  // var paths = [
-  //   'login',
-  //   'forgot-password',
-  //   'go',
-  // ];
-
+  // This is needed to remove facebook login and hide links to browse uber.com
   app.addEventListener("dom-ready", function() {
-    app.insertCSS(hide.join() + '{display:none!important;}');
+    app.insertCSS([
+      '.btn--link',
+      '.text-uber-white',
+      'p.text--center',
+      '.btn--facebook',
+    ].join() + '{display:none!important;}');
     app.insertCSS('header.contextual {position:fixed !important;} .wrapper {padding-top: 80px !important;}');
-    // app.openDevTools();
+    app.openDevTools();
   });
 
 </script>
