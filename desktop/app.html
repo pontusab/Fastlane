@@ -29,13 +29,13 @@ rate limit. This is not optimal but it works for now...
     margin-left: -18px;
   }
 
-  .back {
+  /*.back {
     cursor: pointer;
     position: fixed;
     top: 38px;
     left: 20px;
     color: #fff;
-  }
+  }*/
 </style>
 
 <!-- <a class="back" href="http://localhost:5555">X</a> -->
@@ -53,7 +53,7 @@ rate limit. This is not optimal but it works for now...
   var app = document.getElementById('uber');
 
   // This is needed to remove facebook login and hide links to browse uber.com
-  app.addEventListener("dom-ready", function() {
+  app.addEventListener('dom-ready', function() {
     app.insertCSS([
       '.btn--link',
       '.text-uber-white',

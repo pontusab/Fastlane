@@ -20,7 +20,8 @@ export default class AutoComplete extends React.Component {
   };
 
   componentDidMount() {
-    findDOMNode(this.refs.fromInput.refs.geosuggestInput).focus();
+    // Geosuggest has no ref, need to query classnames
+    findDOMNode(document.querySelectorAll('.geosuggest__input')[0]).focus();
   }
 
   componentWillUpdate(nextProps, { start, end }) {
@@ -30,7 +31,9 @@ export default class AutoComplete extends React.Component {
   setStartLocation(location) {
     this.setState({ start: location });
     this.props.dispatch(productAction(location));
-    findDOMNode(this.refs.toInput.refs.geosuggestInput).focus();
+
+    // Geosuggest has no ref, need to query classnames
+    findDOMNode(document.querySelectorAll('.geosuggest__input')[1]).focus();
   }
 
   setEndLocation(location) {
@@ -48,7 +51,6 @@ export default class AutoComplete extends React.Component {
       <div className={classes}>
         <div className="row from">
           <Geosuggest
-            ref="fromInput"
             required
             placeholder="Enter pickup location"
             autoActivateFirstSuggest="true"
@@ -58,7 +60,6 @@ export default class AutoComplete extends React.Component {
 
         <div className="row to">
           <Geosuggest
-            ref="toInput"
             placeholder="Enter destination"
             autoActivateFirstSuggest="true"
             disabled={!this.state.start}
