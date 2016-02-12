@@ -7,7 +7,11 @@ const initialState = {
 };
 
 export default handleActions({
-  GET_PRODUCTS: (state, { payload }) => ({ ...state, cars: payload }),
+  GET_PRODUCTS: (state, { payload }) => ({
+    ...state,
+    cars: payload.products,
+    location: payload.location,
+  }),
   GET_PRICES: (state, { payload }) => ({ ...state, prices: payload.prices }),
   GET_SELECTED: (state, { payload }) => ({ ...state, selected: payload }),
 }, initialState);
