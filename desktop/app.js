@@ -2,7 +2,7 @@ const menubar = require('menubar');
 const path = require('path');
 
 menubar({
-  icon: path.join(__dirname, '/icons/Icon@2x.png'),
+  icon: path.join(__dirname, '/icons/FastlaneTemplate.png'),
   preloadWindow: true,
   transparent: true,
   height: 525,

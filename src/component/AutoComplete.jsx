@@ -6,46 +6,42 @@ import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
 import productAction from '../action/productAction';
-import priceAction from '../action/priceAction';
+import orderAction from '../action/orderAction';
 
-@connect()
+function select(state) {
+  return {
+    order: state.order,
+  };
+}
+
+@connect(select)
 export default class AutoComplete extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
-  };
-
-  state = {
-    start: false,
-    end: false,
+    order: React.PropTypes.object.isRequired,
   };
 
   componentDidMount() {
-    // Geosuggest has no ref, need to query classnames
     findDOMNode(document.querySelectorAll('.geosuggest__input')[0]).focus();
   }
 
-  componentWillUpdate(nextProps, { start, end }) {
-    if (start && end) this.props.dispatch(priceAction(start, end));
-  }
-
   setStartLocation(location) {
-    this.setState({ start: location });
+    this.props.dispatch(orderAction({ start: location }));
     this.props.dispatch(productAction(location));
 
-    // Geosuggest has no ref, need to query classnames
     findDOMNode(document.querySelectorAll('.geosuggest__input')[1]).focus();
   }
 
   setEndLocation(location) {
-    this.setState({ end: location });
+    this.props.dispatch(orderAction({
+      end: location,
+    }));
   }
 
   render() {
     const classes = cx('options-form', {
-      'is-expanded': this.state.start,
+      'is-expanded': this.props.order.start,
     });
-
-    const { location } = this.state.start;
 
     return (
       <div className={classes}>
@@ -62,10 +58,7 @@ export default class AutoComplete extends React.Component {
           <Geosuggest
             placeholder="Enter destination"
             autoActivateFirstSuggest="true"
-            disabled={!this.state.start}
             onSuggestSelect={::this.setEndLocation}
-            location={new google.maps.LatLng(location)}
-            radius="20"
           />
         </div>
       </div>

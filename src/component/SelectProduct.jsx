@@ -30,7 +30,7 @@ export default class SelectProduct extends React.Component {
                     name="product"
                   />
 
-                  <label htmlFor={product.display_name} onClick={() => ::this.handleClick(index)}>
+                <label htmlFor={product.display_name} onClick={() => ::this.handleClick(index)}>
                     {product.display_name}
                   </label>
                 </li>

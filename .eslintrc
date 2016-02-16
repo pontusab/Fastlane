@@ -2,6 +2,8 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
+    "space-before-keywords": 0,
+    "no-empty-label": 0,
     "no-nested-ternary": 0,
     "react/jsx-quotes": 0,
     "react/jsx-no-bind": 0,

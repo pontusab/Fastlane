@@ -19,7 +19,7 @@ const order = {
     make: 'Bugatti',
     model: 'Veyron',
     license_plate: 'I<3Uber',
-    picture_url: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_(1),_5._April_2012,_D%C3%BCsseldorf.jpg',
+    picture_url: 'http://tinyurl.com/qg4ofd3',
   },
   surge_multiplier: 1.0,
   request_id: 'b2205127-a334-4df4-b1ba-fc9f28f56c96',
