@@ -15,14 +15,14 @@ export default class SelectProduct extends React.Component {
   }
 
   render() {
+    const { order } = this.props;
+
     return (
       <nav className="car-options">
         <ul className="cars">
           {
-            this.props.products.map((product, index) => {
-              console.log(this.props);
-              const selected = this.props.selected === index || false;
-              const selectedProduct = this.props.products[selected];
+            this.props.products.map((product) => {
+              const selected = order.product.product_id === product.product_id || 0;
 
               return (
                 <li key={product.product_id}>
@@ -34,7 +34,7 @@ export default class SelectProduct extends React.Component {
 
                 <label
                   htmlFor={product.display_name}
-                  onClick={() => :: this.handleClick(selectedProduct)}
+                  onClick={() => :: this.handleClick(selected)}
                 >
                     {product.display_name}
                   </label>
