@@ -30,19 +30,20 @@ export default class Search extends React.Component {
   }
 
   onMouseOver() {
-    this.interval = setInterval(::this.fetch, 5000);
+    // this.interval = setInterval(::this.fetch, 10000);
   }
 
   onMouseOut() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   fetch() {
-    this.props.dispatch(productAction(this.props.order.start));
+    const location = this.props.order.start;
+    this.props.dispatch(productAction(location));
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props)
     const products = this.props.products.cars;
 
     return (

@@ -6,12 +6,11 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "start:dev": "webpack && node index.js",
-    "start": "node index.js",
+    "dev": "webpack -w & node index.js",
     "lint": "npm run lint:jscs && npm run lint:eslint",
     "lint:jscs": "./node_modules/jscs/bin/jscs src/**/*.js src/**/*.jsx index.js",
     "lint:eslint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js",
-    "menubar": "electron ./desktop/app.js"
+    "build": "./node_modules/.bin/webpack -p && ./node_modules/electron-packager/cli.js ./ Fastlane --out ./build --platform=darwin --arch=x64 --version=0.34.0 --overwrite --ignore=\"ignore|bin|node_modules|design\""
   },
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
