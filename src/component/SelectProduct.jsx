@@ -15,26 +15,24 @@ export default class SelectProduct extends React.Component {
   }
 
   render() {
-    const { order } = this.props;
-
     return (
       <nav className="car-options">
         <ul className="cars">
           {
             this.props.products.map((product) => {
-              const selected = order.product.product_id === product.product_id || 0;
+              const defaultChecked = this.props.products[0].product_id === product.product_id;
 
               return (
                 <li key={product.product_id}>
                   <input type="radio"
                     id={product.display_name}
-                    defaultChecked={selected}
+                    defaultChecked={defaultChecked}
                     name="product"
                   />
 
                 <label
                   htmlFor={product.display_name}
-                  onClick={() => :: this.handleClick(selected)}
+                  onClick={() => :: this.handleClick(product)}
                 >
                     {product.display_name}
                   </label>

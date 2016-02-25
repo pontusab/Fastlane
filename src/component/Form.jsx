@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import SelectProduct from './SelectProduct.jsx';
 import AutoComplete from './AutoComplete.jsx';
 import CountDown from './CountDown.jsx';
@@ -23,17 +24,25 @@ export default class Form extends React.Component {
   }
 
   render() {
+    const order = this.props.order;
     const products = this.props.products.cars;
-    const selectedId = this.props.products.selected;
-    const selectedProduct = products[selectedId];
-    const estimates = this.props.products.prices[selectedId];
+    const selectedProduct = _.find(
+      products,
+      ['product_id', order.product.product_id || products[0].product_id]
+    );
+
+    const prices = this.props.products.prices;
+    const selectedPrice = _.find(
+      prices,
+      ['product_id', order.product.product_id || products[0].product_id]
+    );
 
     return (
       <form className="order" autoComplete="off" onSubmit={::this.handleSubmit}>
-        <SelectProduct products={products} selected={selectedId} />
+        <SelectProduct products={products} />
         <AutoComplete />
         <CountDown time={selectedProduct.estimate} pulse />
-        { estimates && <Estimate estimate={estimates.estimate} /> }
+        { selectedPrice && <Estimate estimate={selectedPrice.estimate} /> }
 
         <div className="jawbone">
           <button className="regular-button">
