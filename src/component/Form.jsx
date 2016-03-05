@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import requestAction from '../action/requestAction';
 import SelectProduct from './SelectProduct.jsx';
 import AutoComplete from './AutoComplete.jsx';
 import CountDown from './CountDown.jsx';
@@ -15,12 +16,14 @@ function select(state) {
 @connect(select)
 export default class Form extends React.Component {
   static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
     products: React.PropTypes.object.isRequired,
     order: React.PropTypes.object.isRequired,
   };
 
   handleSubmit(evt) {
     evt.preventDefault();
+    if (this.props.order) this.props.dispatch(requestAction(this.props.order));
   }
 
   render() {

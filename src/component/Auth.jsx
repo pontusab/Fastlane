@@ -26,7 +26,7 @@ export default class Auth extends React.Component {
 
     localStorage.setItem('user', JSON.stringify(user));
 
-    return window.location.replace('order');
+    setTimeout(() => window.location.replace('/'), 2000);
   }
 
   render() {

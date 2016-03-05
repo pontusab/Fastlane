@@ -10,7 +10,12 @@ export default class SelectProduct extends React.Component {
     order: React.PropTypes.number.isRequired,
   };
 
-  handleClick(product) {
+  componentDidMount() {
+    // HAAAXX, to get a default product, move to action? yes
+    this.setProduct(this.props.products[0]);
+  }
+
+  setProduct(product) {
     this.props.dispatch(orderAction({ product }));
   }
 
@@ -32,7 +37,7 @@ export default class SelectProduct extends React.Component {
 
                 <label
                   htmlFor={product.display_name}
-                  onClick={() => :: this.handleClick(product)}
+                  onClick={() => :: this.setProduct(product)}
                 >
                     {product.display_name}
                   </label>

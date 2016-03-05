@@ -8,7 +8,8 @@ import Confirm from './component/Confirm.jsx';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Start} />
+    <IndexRoute component={Order} />
+    <Route path="/start" component={Start} />
     <Route path="/auth" component={Auth} />
     <Route path="/order" component={Order} />
     <Route path="/confirm" component={Confirm} />

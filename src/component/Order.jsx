@@ -21,6 +21,10 @@ export default class Search extends React.Component {
   };
 
   componentDidMount() {
+    const user = localStorage.getItem('user');
+
+    if (!user) setTimeout(() => window.location.replace('/start'), 3000);
+
     ::this.fetch();
   }
 
