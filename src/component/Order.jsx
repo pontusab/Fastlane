@@ -28,17 +28,23 @@ export default class Search extends React.Component {
     ::this.fetch();
   }
 
-  componentWillUpdate(props) {
-    const { order: { start, end } } = props;
-    if (start && end) this.props.dispatch(priceAction(start, end));
+  componentWillReceiveProps(props) {
+    console.log(props.order.status);
+    switch (props.order.status) {
+    case 'processing':
+      console.log('processing');
+      break;
+    default:
+
+    }
   }
 
   onMouseOver() {
-    // this.interval = setInterval(::this.fetch, 10000);
+    this.interval = setInterval(::this.fetch, 10000);
   }
 
   onMouseOut() {
-    // clearInterval(this.interval);
+    clearInterval(this.interval);
   }
 
   fetch() {

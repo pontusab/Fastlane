@@ -50,14 +50,14 @@ export default {
 
   request(order) {
     const product_id = order.product.product_id;
-    const start = order.start;
-    const { location: { lat: start_latitude, lng: start_longitude } } = start;
-
-    // const { location: { lat: end_latitude, lng: end_longitude } } = end;
+    const { lat: start_latitude, lng: start_longitude } = order.start.location;
+    const { lat: end_latitude, lng: end_longitude } = order.end.location;
 
     const query = qs.stringify({
       start_latitude,
       start_longitude,
+      end_latitude,
+      end_longitude,
       product_id,
       token: user.access_token,
     });

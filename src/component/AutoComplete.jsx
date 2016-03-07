@@ -6,6 +6,7 @@ import { findDOMNode } from 'react-dom';
 import cx from 'classnames';
 import Geosuggest from 'react-geosuggest';
 import productAction from '../action/productAction';
+import priceAction from '../action/priceAction';
 import orderAction from '../action/orderAction';
 
 function select(state) {
@@ -33,9 +34,9 @@ export default class AutoComplete extends React.Component {
   }
 
   setEndLocation(location) {
-    this.props.dispatch(orderAction({
-      end: location,
-    }));
+    const start = this.props.order.start;
+    this.props.dispatch(orderAction({ end: location }));
+    this.props.dispatch(priceAction(start, location));
   }
 
   render() {

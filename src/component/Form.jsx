@@ -7,13 +7,7 @@ import AutoComplete from './AutoComplete.jsx';
 import CountDown from './CountDown.jsx';
 import Estimate from './Estimate.jsx';
 
-function select(state) {
-  return {
-    order: state.order,
-  };
-}
-
-@connect(select)
+@connect()
 export default class Form extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,

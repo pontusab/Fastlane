@@ -8,4 +8,9 @@ const initialState = {
 
 export default handleActions({
   ORDER: (state, { payload }) => ({ ...state, ...payload }),
+  REQUEST: (state, { payload }) => ({
+    ...state,
+    request_id: payload.request_id,
+    status: payload.status,
+}),
 }, initialState);

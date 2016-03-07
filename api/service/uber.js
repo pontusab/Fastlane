@@ -37,7 +37,7 @@ export default {
         'Content-Type': 'application/json',
       },
       method,
-      json: params,
+      body: JSON.stringify(params),
     }).then((res) => res.json()));
   },
 };
