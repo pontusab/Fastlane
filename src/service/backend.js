@@ -66,4 +66,10 @@ export default {
       method: 'POST',
     }).then(getResponse);
   },
+
+  cancel(id) {
+    return fetch(`${API_ENDPOINT}/request/${id}?token=${user.access_token}`, {
+      method: 'DELETE',
+    }).then(getResponse);
+  },
 };

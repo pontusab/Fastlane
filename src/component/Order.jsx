@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Form from './Form.jsx';
 import Loading from './Loading.jsx';
+import Requesting from './Requesting.jsx';
 import productAction from '../action/productAction';
-import priceAction from '../action/priceAction';
 
 function select(state) {
   return {
@@ -28,23 +28,12 @@ export default class Search extends React.Component {
     ::this.fetch();
   }
 
-  componentWillReceiveProps(props) {
-    console.log(props.order.status);
-    switch (props.order.status) {
-    case 'processing':
-      console.log('processing');
-      break;
-    default:
-
-    }
-  }
-
   onMouseOver() {
-    this.interval = setInterval(::this.fetch, 10000);
+    // this.interval = setInterval(::this.fetch, 10000);
   }
 
   onMouseOut() {
-    clearInterval(this.interval);
+    // clearInterval(this.interval);
   }
 
   fetch() {
@@ -56,16 +45,23 @@ export default class Search extends React.Component {
     const products = this.props.products.cars;
 
     return (
-      <div
-        className="order"
-        onMouseOut={::this.onMouseOut}
-        onMouseOver={::this.onMouseOver}
-      >
+      <div>
         {
-          products.length ?
-            <Form {...this.props} />
+          this.props.order.status === 'processing' ?
+            <Requesting {...this.props} />
           :
-          <Loading />
+          <div
+            className="order"
+            onMouseOut={::this.onMouseOut}
+            onMouseOver={::this.onMouseOver}
+          >
+            {
+              products.length ?
+                <Form {...this.props} />
+              :
+              <Loading />
+            }
+          </div>
         }
       </div>
     );

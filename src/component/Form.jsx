@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import _ from 'lodash';
 import requestAction from '../action/requestAction';
 import SelectProduct from './SelectProduct.jsx';
@@ -7,7 +6,6 @@ import AutoComplete from './AutoComplete.jsx';
 import CountDown from './CountDown.jsx';
 import Estimate from './Estimate.jsx';
 
-@connect()
 export default class Form extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,

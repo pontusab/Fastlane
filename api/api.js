@@ -9,6 +9,7 @@ const api = express();
 
 api.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', DOMAIN);
+  res.header('Access-Control-Allow-Methods', 'DELETE');
   res.header('Access-Control-Allow-Credentials', true);
   next();
 });
@@ -106,7 +107,7 @@ api.get('/request/:request_id', async (req, res) => {
  * @param {request_id}
  */
 api.delete('/request/:request_id', async (req, res) => {
-  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query));
+  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query, 'DELETE'));
 });
 
 api.listen(API_PORT, () => {

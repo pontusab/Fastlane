@@ -12,5 +12,5 @@ export default handleActions({
     ...state,
     request_id: payload.request_id,
     status: payload.status,
-}),
+  }),
 }, initialState);
