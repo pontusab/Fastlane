@@ -28,14 +28,6 @@ export default class Search extends React.Component {
     ::this.fetch();
   }
 
-  onMouseOver() {
-    // this.interval = setInterval(::this.fetch, 10000);
-  }
-
-  onMouseOut() {
-    // clearInterval(this.interval);
-  }
-
   fetch() {
     const location = this.props.order.start;
     this.props.dispatch(productAction(location));
@@ -52,8 +44,6 @@ export default class Search extends React.Component {
           :
           <div
             className="order"
-            onMouseOut={::this.onMouseOut}
-            onMouseOver={::this.onMouseOver}
           >
             {
               products.length ?

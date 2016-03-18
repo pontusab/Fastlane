@@ -4,7 +4,7 @@ import App from './component/App.jsx';
 import Start from './component/Start.jsx';
 import Auth from './component/Auth.jsx';
 import Order from './component/Order.jsx';
-import Confirm from './component/Confirm.jsx';
+import EnRoute from './component/EnRoute.jsx';
 
 export default (
   <Route path="/" component={App}>
@@ -12,6 +12,6 @@ export default (
     <Route path="/start" component={Start} />
     <Route path="/auth" component={Auth} />
     <Route path="/order" component={Order} />
-    <Route path="/confirm" component={Confirm} />
+    <Route path="/enroute" component={EnRoute} />
   </Route>
 );

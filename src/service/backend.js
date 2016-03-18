@@ -48,6 +48,10 @@ export default {
       .then(getResponse);
   },
 
+  requestStatus(id) {
+    return fetch(`${API_ENDPOINT}/request/${id}?token=${user.access_token}`).then(getResponse);
+  },
+
   request(order) {
     const product_id = order.product.product_id;
     const { lat: start_latitude, lng: start_longitude } = order.start.location;

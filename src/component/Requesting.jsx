@@ -1,24 +1,47 @@
 import React from 'react';
 import cancelRequestAction from '../action/cancelRequestAction';
+import getRequestAction from '../action/getRequestAction';
 import CountDown from './CountDown.jsx';
-import Estimate from './Estimate.jsx';
 
 export default class Requesting extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
+    order: React.PropTypes.object.isRequired,
   };
 
   constructor() {
     super();
-    this.interval = setInterval(::this.poll, 1000);
+    this.interval = setInterval(::this.poll, 5000);
+  }
+
+  componentWillReceiveProps(props) {
+    switch (props.order.status) {
+    case 'no_drivers_available':
+    case 'driver_canceled':
+    case 'rider_canceled':
+      window.location.replace('/start');
+      break;
+    case 'accepted':
+      window.location.replace('/enroute');
+      break;
+    default:
+      // Do Nothing
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   poll() {
-    console.log('poll');
+    this.props.dispatch(getRequestAction(this.props.order.request_id));
+  }
+
+  cancelRequest() {
+    this.props.dispatch(cancelRequestAction(this.props.order.request_id));
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="requesting">
         <div className="progress">
@@ -27,12 +50,11 @@ export default class Requesting extends React.Component {
         </div>
 
         <CountDown time={this.props.order.product.estimate} />
-        { /* <Estimate estimate="137-170 kr" /> */ }
 
         <div className="jawbone">
           <button
             className="regular-button"
-            onClick={() => this.props.dispatch(cancelRequestAction(this.props.order.request_id))}
+            onClick={::this.cancelRequest}
           >
               Cancel request
           </button>
