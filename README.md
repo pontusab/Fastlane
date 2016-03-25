@@ -36,5 +36,5 @@ My contact information is located on my [Github profile](https://github.com/pont
 
 * [Twitter](https://twitter.com/pontusab)
 * [LinkedIn](https://www.linkedin.com/in/pontusabrahamsson)
-* [Mail](info@wdlinkoping.se)
+* [Mail](mailto:info@wdlinkoping.se)
 * [Blog](https://medium.com/@pontusab)
