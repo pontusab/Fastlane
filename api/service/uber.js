@@ -27,6 +27,16 @@ export default {
     }).then((res) => res.json()));
   },
 
+  delete(request, params) {
+    const { token } = params;
+
+    return Promise.resolve(fetch(`${UBER_API_ENDPOINT}/${request}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: 'DELETE',
+    }).then((res) => res.json()));
+  },
 
   request(request, params, method = 'GET') {
     const { token } = params;

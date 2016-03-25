@@ -102,12 +102,12 @@ api.get('/request/:request_id', async (req, res) => {
 });
 
 /**
- * Ride request - Details
+ * Ride request - Delete
  * DELETE /v1/request
  * @param {request_id}
  */
 api.delete('/request/:request_id', async (req, res) => {
-  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query, 'DELETE'));
+  return res.json(await uber.delete(`v1/requests/${req.params.request_id}`, req.query));
 });
 
 api.listen(API_PORT, () => {

@@ -52,6 +52,10 @@ export default {
     return fetch(`${API_ENDPOINT}/request/${id}?token=${user.access_token}`).then(getResponse);
   },
 
+  requestMap(id) {
+    return fetch(`${API_ENDPOINT}/request/${id}/map?token=${user.access_token}`).then(getResponse);
+  },
+
   request(order) {
     const product_id = order.product.product_id;
     const { lat: start_latitude, lng: start_longitude } = order.start.location;

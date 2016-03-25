@@ -1,33 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import getRequestAction from '../action/getRequestAction';
+import getEnRouteMap from '../action/getEnRouteMap';
 
-// Fixture
-const order = {
-  status: 'accepted',
-  driver: {
-    phone_number: '(555)555-5555',
-    rating: 5,
-    picture_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/chadengle/128.jpg',
-    name: 'Bob',
-  },
-  eta: 4,
-  location: {
-    latitude: 37.776033,
-    longitude: -122.418143,
-    bearing: 33,
-  },
-  vehicle: {
-    make: 'Bugatti',
-    model: 'Veyron',
-    license_plate: 'I<3Uber',
-    picture_url: 'http://tinyurl.com/qg4ofd3',
-  },
-  surge_multiplier: 1.0,
-  request_id: 'b2205127-a334-4df4-b1ba-fc9f28f56c96',
-};
+function select(state) {
+  return {
+    ridemap: state.ridemap,
+  };
+}
 
 export default class Confirm extends React.Component {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    order: React.PropTypes.object.isRequired,
+    ridemap: React.PropTypes.object.isRequired,
+  };
+
+  constructor() {
+    super();
+    this.interval = setInterval(::this.poll, 5000);
+  }
+
   componentDidMount() {
-    this.interval = setInterval(this.poll, 5000);
+    this.props.dispatch(getEnRouteMap(this.props.order.request_id));
   }
 
   componentWillUnmount() {
@@ -35,10 +30,12 @@ export default class Confirm extends React.Component {
   }
 
   poll() {
-    console.log('poll');
+    this.props.dispatch(getRequestAction(this.props.order.request_id));
   }
 
   render() {
+    const { order } = this.props;
+    console.log(order.ridemap.href);
     return (
       <div className="route">
         <div className="information">
@@ -64,11 +61,11 @@ export default class Confirm extends React.Component {
           </div>
 
           <div className="map">
-            <iframe className="map-frame" src="https://sandbox-api.uber.com/v1/sandbox/map" />
+            <iframe className="map-frame" src={order.ridemap.href} />
           </div>
 
           <div className="arriving">
-            <span className="time">1</span>
+            <span className="time">{order.eta}</span>
             <span className="text">Min</span>
             <div className="border"></div>
           </div>

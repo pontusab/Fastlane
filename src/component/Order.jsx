@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Form from './Form.jsx';
 import Loading from './Loading.jsx';
 import Requesting from './Requesting.jsx';
+import EnRoute from './EnRoute.jsx';
 import productAction from '../action/productAction';
 
 function select(state) {
@@ -21,11 +22,32 @@ export default class Search extends React.Component {
   };
 
   componentDidMount() {
+    // Move to state instead of localStorage
     const user = localStorage.getItem('user');
-
     if (!user) setTimeout(() => window.location.replace('/start'), 3000);
 
     ::this.fetch();
+  }
+
+  getStateComponent() {
+    // Will refactor to only have one container component
+    // instead of using react router because the app is not that complex
+    switch (this.props.order.status) {
+    case 'no_drivers_available':
+    case 'driver_canceled':
+    case 'rider_canceled':
+    case 'completed':
+      return <Form {...this.props} />;
+    case 'processing':
+      return <Requesting {...this.props} />;
+    case 'accepted':
+      return <EnRoute {...this.props} />;
+    case 'arriving':
+      console.log('car is here!!!');
+      return;
+    default:
+      return <Form {...this.props} />;
+    }
   }
 
   fetch() {
@@ -35,23 +57,13 @@ export default class Search extends React.Component {
 
   render() {
     const products = this.props.products.cars;
-
     return (
-      <div>
+      <div className="order">
         {
-          this.props.order.status === 'processing' ?
-            <Requesting {...this.props} />
+          products.length ?
+            this.getStateComponent()
           :
-          <div
-            className="order"
-          >
-            {
-              products.length ?
-                <Form {...this.props} />
-              :
-              <Loading />
-            }
-          </div>
+          <Loading />
         }
       </div>
     );

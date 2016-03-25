@@ -11,22 +11,8 @@ export default class Requesting extends React.Component {
 
   constructor() {
     super();
-    this.interval = setInterval(::this.poll, 5000);
-  }
-
-  componentWillReceiveProps(props) {
-    switch (props.order.status) {
-    case 'no_drivers_available':
-    case 'driver_canceled':
-    case 'rider_canceled':
-      window.location.replace('/start');
-      break;
-    case 'accepted':
-      window.location.replace('/enroute');
-      break;
-    default:
-      // Do Nothing
-    }
+    this.interval = setInterval(::this.poll, 2000);
+    this.state = { title: 'Requesting' };
   }
 
   componentWillUnmount() {
@@ -38,6 +24,7 @@ export default class Requesting extends React.Component {
   }
 
   cancelRequest() {
+    this.setState({ title: 'Canceling request' });
     this.props.dispatch(cancelRequestAction(this.props.order.request_id));
   }
 
@@ -45,7 +32,7 @@ export default class Requesting extends React.Component {
     return (
       <div className="requesting">
         <div className="progress">
-          <span>Requesting</span>
+          <span>{this.state.title}</span>
           <div className="loading"></div>
         </div>
 
