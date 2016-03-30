@@ -1,13 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import getRequestAction from '../action/getRequestAction';
 import getEnRouteMap from '../action/getEnRouteMap';
-
-function select(state) {
-  return {
-    ridemap: state.ridemap,
-  };
-}
 
 export default class Confirm extends React.Component {
   static propTypes = {

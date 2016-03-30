@@ -1,11 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 
-export default class Loading extends React.Component {
-  render() {
-    return (
-      <div className="loading-pulse">
-        <div className="pulse"></div>
-      </div>
-    );
-  }
-}
+export default () => (
+  <div className="loading-pulse">
+    <div className="pulse"></div>
+  </div>
+);
