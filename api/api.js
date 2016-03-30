@@ -18,18 +18,15 @@ api.use((req, res, next) => {
  * Geolocation
  * GET /geolocation
  */
-api.get('/geolocation', async (req, res) => {
-  return res.json(await geolocation.lookup());
-});
+api.get('/geolocation', async (req, res) => res.json(await geolocation.lookup()));
 
 /**
  * Authenticate
  * GET /oauth/v2/authorize
  * @param {code}
  */
-api.post('/auth', async (req, res) => {
-  return res.json(await uber.authenticate(req.query.code));
-});
+api.post('/auth', async (req, res) =>
+  res.json(await uber.authenticate(req.query.code)));
 
 /**
  * Product types
@@ -37,9 +34,8 @@ api.post('/auth', async (req, res) => {
  * @param {latitude}
  * @param {longitude}
  */
-api.get('/products', async (req, res) => {
-  return res.json(await uber.request('v1/products', req.query));
-});
+api.get('/products', async (req, res) =>
+  res.json(await uber.request('v1/products', req.query)));
 
 /**
  * Time estimates
@@ -49,9 +45,8 @@ api.get('/products', async (req, res) => {
  * @param {customer_uuid?}
  * @param {product_id?}
  */
-api.get('/estimates/time', async (req, res) => {
-  return res.json(await uber.request('v1/estimates/time', req.query));
-});
+api.get('/estimates/time', async (req, res) =>
+  res.json(await uber.request('v1/estimates/time', req.query)));
 
 /**
  * Price estimates
@@ -61,18 +56,16 @@ api.get('/estimates/time', async (req, res) => {
  * @param {end_latitude}
  * @param {end_longitude}
  */
-api.get('/estimates/price', async (req, res) => {
-  return res.json(await uber.request('v1/estimates/price', req.query));
-});
+api.get('/estimates/price', async (req, res) =>
+  res.json(await uber.request('v1/estimates/price', req.query)));
 
 /**
  * Ride request - Map
  * GET /v1/request
  * @param {request_id}
  */
-api.get('/request/:request_id/map', async (req, res) => {
-  return res.json(await uber.request(`v1/requests/${req.params.request_id}/map`, req.query));
-});
+api.get('/request/:request_id/map', async (req, res) =>
+  res.json(await uber.request(`v1/requests/${req.params.request_id}/map`, req.query)));
 
 /**
  * Ride request
@@ -88,27 +81,25 @@ api.get('/request/:request_id/map', async (req, res) => {
  * @param {end_address?}
  * @param {surge_confirmation_id?}
  */
-api.post('/request', async (req, res) => {
-  return res.json(await uber.request(`v1/requests`, req.query, 'POST'));
-});
+api.post('/request', async (req, res) =>
+  res.json(await uber.request('v1/requests', req.query, 'POST')));
 
 /**
  * Ride request - Details
  * GET /v1/request
  * @param {request_id}
  */
-api.get('/request/:request_id', async (req, res) => {
-  return res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query));
-});
+api.get('/request/:request_id', async (req, res) =>
+  res.json(await uber.request(`v1/requests/${req.params.request_id}`, req.query)));
 
 /**
  * Ride request - Delete
  * DELETE /v1/request
  * @param {request_id}
  */
-api.delete('/request/:request_id', async (req, res) => {
-  return res.json(await uber.delete(`v1/requests/${req.params.request_id}`, req.query));
-});
+api.delete('/request/:request_id', async (req, res) =>
+  res.json(await uber.delete(`v1/requests/${req.params.request_id}`, req.query)));
+
 
 api.listen(API_PORT, () => {
   console.log(`Api started on port ${API_PORT}`);
