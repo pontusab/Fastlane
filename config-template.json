@@ -9,5 +9,5 @@
   "CLIENT_ID": "",
   "CLIENT_SECRET": "",
   "SESSION_SECRET": "",
-  "GA": "UA-XXXXXX-X"
+  "GA_UA": "UA-XXXXXX-X"
 }

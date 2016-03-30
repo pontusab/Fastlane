@@ -15,7 +15,9 @@ export default class Confirm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getEnRouteMap(this.props.order.request_id));
+    if (!this.props.order.ridemap.href) {
+      this.props.dispatch(getEnRouteMap(this.props.order.request_id));
+    }
   }
 
   componentWillUnmount() {
@@ -39,7 +41,7 @@ export default class Confirm extends React.Component {
               <span className="name">{order.driver.name}</span>
               <span className="rating">
                 <span className="rating-text">{order.driver.rating}</span>
-                <img src="assets/img/star.svg" />
+                <img src="assets/img/star-light.svg" />
               </span>
             </div>
           </div>
@@ -59,7 +61,7 @@ export default class Confirm extends React.Component {
 
           <div className="arriving">
             <span className="time">{order.eta}</span>
-            <span className="text">Min</span>
+            <span className="text">min</span>
             <div className="border"></div>
           </div>
         </div>

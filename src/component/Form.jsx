@@ -41,7 +41,7 @@ export default class Form extends React.Component {
 
         <div className="jawbone">
           <button className="regular-button">
-            {`Request ${selectedProduct.display_name}`}
+            Request
           </button>
         </div>
       </form>

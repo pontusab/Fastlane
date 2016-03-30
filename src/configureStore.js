@@ -2,17 +2,18 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import promise from 'redux-promise';
 import ga from 'react-ga';
 import rootReducer from './reducer';
-import { GA } from '../config.json';
+import { GA_UA } from '../config.json';
 
-ga.initialize(GA);
+ga.initialize(GA_UA);
 
 function logActionChange() {
   return (next) => (action) => {
-    ga.event({
-      category: 'User',
-      action: action.type,
-    });
-    console.log(action);
+    if (action.type === 'ORDER') ga.pageview('/order');
+
+    if (action.payload.status === 'accepted') {
+      ga.event({ category: 'User', action: 'Ride Request' });
+    }
+
     return next(action);
   };
 }

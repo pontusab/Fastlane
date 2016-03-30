@@ -11,7 +11,7 @@ export default class Requesting extends React.Component {
 
   constructor() {
     super();
-    this.interval = setInterval(::this.poll, 2000);
+    this.interval = setInterval(::this.poll, 4000);
     this.state = { title: 'Requesting' };
   }
 
@@ -40,7 +40,7 @@ export default class Requesting extends React.Component {
 
         <div className="jawbone">
           <button
-            className="regular-button"
+            className="regular-button cancel"
             onClick={::this.cancelRequest}
           >
               Cancel request
