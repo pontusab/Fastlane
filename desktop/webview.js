@@ -14,10 +14,9 @@ webview.addEventListener('dom-ready', () => {
     'header.contextual {position:fixed !important;} .wrapper {padding-top: 80px !important;}'
   );
 
-
   webview.addEventListener('console-message', (e) => {
     console.log('Guest page logged a message:', e.message);
   });
 
-  webview.openDevTools();
+  // webview.openDevTools();
 });

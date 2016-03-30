@@ -19,10 +19,10 @@ button {
 }
 
 .regular-button.cancel {
-  background: #1D1D1D;
+  background: #000;
 
   &:hover {
-    background: #000;
+    background: #1D1D1D;
   }
 }
 

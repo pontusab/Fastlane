@@ -7,6 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack -w & node index.js",
+    "desktop": "webpack -p & electron desktop/app.js",
     "lint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js"
   },
   "dependencies": {

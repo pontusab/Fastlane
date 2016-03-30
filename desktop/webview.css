@@ -2,7 +2,7 @@ body {
   width: 340px;
   height: 495px;
   padding: 0;
-  margin: 18px 0 0;
+  margin: 14px 0 0;
   position: relative;
 }
 
@@ -15,8 +15,8 @@ body:after {
   width: 0;
   position: absolute;
   pointer-events: none;
-  border-color: rgba(12, 17, 26, 0);
-  border-bottom-color: #0C111A;
-  border-width: 18px;
-  margin-left: -18px;
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #fff;
+  border-width: 14px;
+  margin-left: -14px;
 }
