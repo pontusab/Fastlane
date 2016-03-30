@@ -50,7 +50,7 @@ export default class AutoComplete extends React.Component {
           <Geosuggest
             required
             placeholder="Enter pickup location"
-            autoActivateFirstSuggest="true"
+            autoActivateFirstSuggest
             onSuggestSelect={::this.setStartLocation}
           />
         </div>
@@ -58,7 +58,7 @@ export default class AutoComplete extends React.Component {
         <div className="row to">
           <Geosuggest
             placeholder="Enter destination"
-            autoActivateFirstSuggest="true"
+            autoActivateFirstSuggest
             onSuggestSelect={::this.setEndLocation}
           />
         </div>

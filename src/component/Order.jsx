@@ -38,12 +38,11 @@ export default class Search extends React.Component {
     case 'rider_canceled':
     case 'completed':
     case 'arriving':
-      return <Form {...this.props} />;
+      return window.location.replace('/order');
     case 'processing':
       return <Requesting {...this.props} />;
     case 'accepted':
       return <EnRoute {...this.props} />;
-      return;
     default:
       return <Form {...this.props} />;
     }

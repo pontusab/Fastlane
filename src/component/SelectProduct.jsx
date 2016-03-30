@@ -7,7 +7,6 @@ export default class SelectProduct extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     products: React.PropTypes.array.isRequired,
-    order: React.PropTypes.number.isRequired,
   };
 
   componentDidMount() {
