@@ -16,11 +16,10 @@ Start the app by running `npm run start` and to build the packade `npm run build
 
 ## TODO
 - [ ] Remove React router
-- [ ] Rewrite the structrure
+- [ ] Rewrite the code and cleanup
 - [ ] Add support for no cars available
-- [ ] incomplete
 - [ ] Remove Api-server and use client only (CORS support)
-- [ ] Implement Philips Hue to blink when car is arriving
+- [ ] Implement Philips Hue to flash when car is arriving
 - [x] Implement Map
 
 
