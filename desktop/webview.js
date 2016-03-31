@@ -18,5 +18,5 @@ webview.addEventListener('dom-ready', () => {
     console.log('Guest page logged a message:', e.message);
   });
 
-  // webview.openDevTools();
+  webview.openDevTools();
 });

@@ -56,7 +56,7 @@ export default class Confirm extends React.Component {
           </div>
 
           <div className="map">
-            <iframe className="map-frame" src={order.ridemap.href} />
+            <iframe className="map-frame" src="http://i.imgur.com/D31XiQL.jpg" />
           </div>
 
           <div className="arriving">

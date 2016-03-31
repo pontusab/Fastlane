@@ -7,15 +7,12 @@ ul {
 
 .regular-button,
 button {
+  font-family: ff;
+  font-style: normal;
   font-weight: 500;
   cursor: pointer;
   outline: none;
   -webkit-font-smoothing: antialiased;
-  transition: all .2s ease-in-out;
-
-  &:hover {
-    background: #499A49;
-  }
 }
 
 .regular-button.cancel {
