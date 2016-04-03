@@ -3,4 +3,4 @@ node_modules
 public
 *.iml
 config.json
-release/Fastlane-darwin-x64
+release
