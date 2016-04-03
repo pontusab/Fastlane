@@ -9,12 +9,7 @@ const server = express();
 server.use('/api', api());
 
 // Serve static files
-server.use('/public', express.static('public'));
-
-// Serve bundle
-server.get('/bundle', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/bundle.js'));
-});
+server.use('/public', express.static(path.join(__dirname, '../public')));
 
 // Serve html for react
 server.get('*', (req, res) => {

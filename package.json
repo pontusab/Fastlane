@@ -6,10 +6,10 @@
   "main": "desktop.js",
   "private": true,
   "scripts": {
-    "dev": "webpack -w --config webpack.dev.config.js & node index.js",
+    "dev": "webpack --config webpack.dev.config.js & node index.js",
     "desktop": "webpack --config webpack.prod.config.js && electron desktop.js",
     "lint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js",
-    "build": "NODE_ENV=production webpack --bail --config webpack.prod.config.js && npm install && npm prune && electron-packager . Fastlane --platform=darwin --arch=x64 --version=0.36.6 --out=release --overwrite --icon=./public/icons/icon.icns --ignore=design"
+    "build": "NODE_ENV=production webpack --bail --config webpack.prod.config.js && npm prune && electron-packager . Fastlane --platform=darwin --arch=x64 --version=0.36.6 --out=release --overwrite --icon=./public/icons/icon.icns --ignore=design"
   },
   "dependencies": {
     "babel-plugin-transform-decorators-legacy": "^1.3.4",

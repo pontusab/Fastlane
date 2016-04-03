@@ -1,14 +1,12 @@
 import qs from 'query-string';
-import config from '../../config.json';
-
-const { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } = config;
+import { CLIENT_ID, REDIRECT_URI, CLIENT_SECRET } from '../../config.json';
 
 export default {
   generateAuthUrl() {
     const query = qs.stringify({
       response_type: 'code',
       redirect_uri: REDIRECT_URI,
-      scope: 'profile history request request_receipt',
+      scope: 'request',
       client_id: CLIENT_ID,
     });
 
