@@ -2,7 +2,7 @@
 
 ![Build](https://travis-ci.org/pontusab/Fastlane.svg?branch=master)
 
-![ScreenShot](http://fastlaneapp.co/assets/img/Fastlane-fullscreen.png)
+![ScreenShot](http://fastlaneapp.co/assets/img/fullscreen.png)
 
 ## Why?
 I wanted to build something with React and Electron so I started thinking during Christmas what I wanted to build and I realized when I sat at the computer and did not know where my cell phone was to be able to book an Uber then it hit me that an Mac App for Uber would be fun to build and Uber pretty recently released their API endpoint for requests. Success!
