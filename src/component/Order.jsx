@@ -49,8 +49,7 @@ export default class Search extends React.Component {
   }
 
   fetch() {
-    const location = this.props.order.start;
-    this.props.dispatch(productAction(location));
+    this.props.dispatch(productAction(this.props.order.start));
   }
 
   render() {

@@ -30,7 +30,6 @@ export default class Confirm extends React.Component {
 
   render() {
     const { order } = this.props;
-    console.log(order.ridemap.href);
     return (
       <div className="route">
         <div className="information">
