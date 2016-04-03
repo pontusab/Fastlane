@@ -41,7 +41,7 @@ export default class Confirm extends React.Component {
               <span className="name">{order.driver.name}</span>
               <span className="rating">
                 <span className="rating-text">{order.driver.rating}</span>
-                <img src="assets/img/star-light.svg" />
+                <img src="public/img/star-light.svg" />
               </span>
             </div>
           </div>

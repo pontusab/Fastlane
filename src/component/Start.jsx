@@ -13,7 +13,7 @@ export default class Start extends React.Component {
         <div className="auth">
           <div className="splash"></div>
           <a className="logo" href={uber.generateRegisterUrl()}>
-            <img src="assets/img/logo.svg" alt="Uber" />
+            <img src="public/img/logo.svg" alt="Uber" />
           </a>
 
           <div className="auth-actions jawbone">

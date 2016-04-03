@@ -3,6 +3,3 @@ require('babel-register');
 
 // start frontend server
 require('./src/server.js');
-
-// start api server
-require('./api/api.js');

@@ -1,8 +1,7 @@
 {
   "PORT": 5555,
-  "API_PORT": 5556,
   "DOMAIN": "http://localhost:5555",
-  "API_ENDPOINT": "http://localhost:5556",
+  "API_ENDPOINT": "http://localhost:5555/api",
   "REDIRECT_URI": "http://localhost:5555",
   "UBER_AUTH_ENDPOINT": "https://login.uber.com/oauth",
   "UBER_API_ENDPOINT": "https://sandbox-api.uber.com",
