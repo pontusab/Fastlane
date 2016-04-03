@@ -4,9 +4,9 @@ import uber from './service/uber';
 import geolocation from './service/geolocation';
 import { DOMAIN } from '../../config';
 
-export default function () {
-  const api = Router();
+const api = Router();
 
+export default () => {
   api.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', DOMAIN);
     res.header('Access-Control-Allow-Methods', 'DELETE');
@@ -101,4 +101,4 @@ export default function () {
     res.json(await uber.delete(`v1/requests/${req.params.request_id}`, req.query)));
 
   return api;
-}
+};

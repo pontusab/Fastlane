@@ -21,6 +21,7 @@
     "lodash": "^4.7.0",
     "menubar": "4.1.0",
     "node-fetch": "^1.4.1",
+    "public-ip": "^1.2.0",
     "query-string": "^4.1.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",

@@ -50,13 +50,7 @@ export default class Search extends React.Component {
 
   fetch() {
     const location = this.props.order.start;
-
-    // Google gelocation returns unknown error now and then.. retry..
-    setInterval(() => {
-      if (!this.props.products.cars.length) {
-        this.props.dispatch(productAction(location));
-      }
-    }, 2000);
+    this.props.dispatch(productAction(location));
   }
 
   render() {
