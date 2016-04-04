@@ -1,6 +1,5 @@
 npm-debug.log
 node_modules
-public
 *.iml
 config.json
 release

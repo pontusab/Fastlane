@@ -8,6 +8,7 @@ require('babel-register');
 require('./src/server.js');
 
 menubar({
+  'show-dock-icon': true,
   icon: path.join(__dirname, '/public/icons/UberLogo.png'),
   transparent: true,
   movable: false,
