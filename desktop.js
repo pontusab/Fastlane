@@ -9,7 +9,7 @@ require('./src/server.js');
 
 menubar({
   'show-dock-icon': true,
-  icon: path.join(__dirname, '/public/icons/UberLogo.png'),
+  icon: path.join(__dirname, '/public/icons/UberLogoTemplate.png'),
   transparent: true,
   movable: false,
   resizable: false,
