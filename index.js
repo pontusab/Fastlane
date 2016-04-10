@@ -1,5 +1,5 @@
 // enable ES6 (transpiling behind the scene)
 require('babel-register');
 
-// start frontend server
+// start server
 require('./src/server.js');

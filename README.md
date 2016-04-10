@@ -1,4 +1,4 @@
-## Fastlane - Uber from your menubar
+## Fastlane - Book Uber from your menubar, fast and simple.
 
 ![Build](https://travis-ci.org/pontusab/Fastlane.svg?branch=master)
 
@@ -15,11 +15,10 @@ Run npm-install to install all dependencies and rename config-template.json to c
 Start the app by running `npm run start` and to build the packade `npm run build`.
 
 ## TODO
-- [ ] Remove React router
-- [ ] Rewrite the code and cleanup
-- [ ] Add support for no cars available
+- [ ] Reduce bundle size
+- [ ] Refactor code
 - [ ] Remove Api-server and use client only (CORS support)
-- [ ] Implement Philips Hue to flash when car is arriving
+- [x] Add support for no cars available
 - [x] Implement Map
 
 

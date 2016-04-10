@@ -4,10 +4,11 @@ const path = require('path');
 // enable ES6 (transpiling behind the scene)
 require('babel-register');
 
-// start frontend server
+// start server
 require('./src/server.js');
 
 menubar({
+  preload: true,
   'show-dock-icon': true,
   icon: path.join(__dirname, '/public/icons/UberLogoTemplate.png'),
   transparent: true,

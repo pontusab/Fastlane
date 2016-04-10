@@ -2,14 +2,14 @@
   "name": "Fastlane",
   "author": "Pontus Abrahamsson",
   "homepage": "http://fastlaneapp.co",
-  "version": "1.0.0",
+  "version": "0.5.1",
   "main": "desktop.js",
   "private": true,
   "scripts": {
     "dev": "webpack --config webpack.dev.config.js & node index.js",
     "desktop": "webpack --config webpack.prod.config.js && electron desktop.js",
     "lint": "./node_modules/eslint/bin/eslint.js \"src/**/?(*.js|*.jsx)\" index.js",
-    "build": "NODE_ENV=production webpack --bail --config webpack.prod.config.js && npm prune && electron-packager . Fastlane --platform=darwin --arch=x64 --version=0.36.6 --out=release --overwrite --icon=./public/icons/icon.icns --ignore=design",
+    "build": "NODE_ENV=production webpack --bail --config webpack.prod.config.js && npm prune && electron-packager . Fastlane --platform=darwin --arch=x64 --version=0.36.6 --out=release --overwrite --icon=./public/icons/icon.icns --ignore=\"node_modules/(webpack|babel-eslint|eslint|eslint-config-airbnb|eslint-plugin-react|pre-commit|node-sass|sass-loader|style-loader)\"",
     "build:dmg": "electron-installer-dmg release/Fastlane-darwin-x64/Fastlane.app Fastlane --out=./release --icon=./public/icons/icon.icns --background=./public/img/background.png --overwrite"
   },
   "dependencies": {

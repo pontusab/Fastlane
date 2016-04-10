@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions';
 
 const initialState = {
-  cars: [{}],
-  prices: [{}],
+  cars: [],
+  prices: [],
   loading: true,
 };
 

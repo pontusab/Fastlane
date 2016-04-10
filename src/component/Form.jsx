@@ -22,16 +22,17 @@ export default class Form extends React.Component {
     let selectedProduct = false;
     let selectedPrice = false;
     const { products, order } = this.props;
+    const { product } = order;
 
-    if (products.cars && products.cars[0]) {
+    if (products.cars[0]) {
       selectedProduct = _.find(
         products.cars,
-        ['product_id', order.product && order.product.product_id || products.cars[0].product_id]
+        ['product_id', product && product.product_id || products.cars[0].product_id]
       );
 
       selectedPrice = _.find(
         products.prices,
-        ['product_id', order.product && order.product.product_id || products.cars[0].product_id]
+        ['product_id', product && product.product_id || products.cars[0].product_id]
       );
     }
 

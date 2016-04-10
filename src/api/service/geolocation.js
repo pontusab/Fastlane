@@ -5,14 +5,14 @@ import fetch from 'node-fetch';
 export default {
   lookup() {
     return Promise.resolve(fetch('http://ip-api.com/json')
-      .then((res) => res.json())
-      .then(({ lat, lon }) => {
-        return {
-          location: {
-            lat,
-            lng: lon,
-          },
-        };
-      }));
+    .then((res) => res.json())
+    .then(({ lat, lon }) => {
+      return {
+        location: {
+          lat,
+          lng: lon,
+        },
+      };
+    }));
   },
 };

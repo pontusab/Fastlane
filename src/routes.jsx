@@ -8,7 +8,7 @@ import EnRoute from './component/EnRoute.jsx';
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={Start} />
+    <IndexRoute component={Order} />
     <Route path="/start" component={Start} />
     <Route path="/auth" component={Auth} />
     <Route path="/order" component={Order} />
