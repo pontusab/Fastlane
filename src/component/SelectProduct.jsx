@@ -9,9 +9,8 @@ export default class SelectProduct extends React.Component {
     products: React.PropTypes.array,
   };
 
-  componentDidMount() {
-    // HAAAXX, to get a default product, move to action? yes
-    if (this.props.products) this.setProduct(this.props.products[0]);
+  componentWillReceiveProps({ products }) {
+    if (products[0]) this.setProduct(products[0]);
   }
 
   setProduct(product) {

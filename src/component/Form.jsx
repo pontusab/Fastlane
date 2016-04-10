@@ -15,7 +15,7 @@ export default class Form extends React.Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    if (this.props.order) this.props.dispatch(requestAction(this.props.order));
+    if (this.props.order.start) this.props.dispatch(requestAction(this.props.order));
   }
 
   render() {
@@ -44,7 +44,7 @@ export default class Form extends React.Component {
 
         <div className="jawbone">
           <button className="regular-button">
-            Request
+             {`Request ${selectedProduct.display_name || ''}`}
           </button>
         </div>
       </form>

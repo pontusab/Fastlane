@@ -11,7 +11,7 @@ export default class Requesting extends React.Component {
 
   constructor() {
     super();
-    this.interval = setInterval(::this.poll, 4000);
+    this.interval = setInterval(::this.poll, 3000);
     this.state = { title: 'Requesting' };
   }
 

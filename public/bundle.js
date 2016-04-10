@@ -56,7 +56,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "2aba7245e645525883dc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4eb0f9aa468a783c7d02"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -17323,22 +17323,31 @@
 	      while (1) {
 	        switch (_context.prev = _context.next) {
 	          case 0:
-	            _ref = selectedLocation || {
-	              location: {
-	                lat: 1232,
-	                lng: 123
-	              }
-	            };
-	            location = _ref.location;
+	            _context.t0 = selectedLocation;
+
+	            if (_context.t0) {
+	              _context.next = 5;
+	              break;
+	            }
+
 	            _context.next = 4;
-	            return _backend2.default.products(location);
+	            return _backend2.default.lookup();
 
 	          case 4:
+	            _context.t0 = _context.sent;
+
+	          case 5:
+	            _ref = _context.t0;
+	            location = _ref.location;
+	            _context.next = 9;
+	            return _backend2.default.products(location);
+
+	          case 9:
 	            _ref2 = _context.sent;
 	            products = _ref2.times;
 	            return _context.abrupt('return', products);
 
-	          case 7:
+	          case 12:
 	          case 'end':
 	            return _context.stop();
 	        }
@@ -27014,7 +27023,7 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(evt) {
 	      evt.preventDefault();
-	      if (this.props.order) this.props.dispatch((0, _requestAction2.default)(this.props.order));
+	      if (this.props.order.start) this.props.dispatch((0, _requestAction2.default)(this.props.order));
 	    }
 	  }, {
 	    key: 'render',
@@ -27045,7 +27054,7 @@
 	          _react2.default.createElement(
 	            'button',
 	            { className: 'regular-button' },
-	            'Request'
+	            'Request ' + (selectedProduct.display_name || '')
 	          )
 	        )
 	      );
@@ -27172,7 +27181,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log();
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'order' },
@@ -27361,10 +27369,11 @@
 	  }
 
 	  (0, _createClass3.default)(SelectProduct, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      // HAAAXX, to get a default product, move to action? yes
-	      if (this.props.products) this.setProduct(this.props.products[0]);
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(_ref) {
+	      var products = _ref.products;
+
+	      if (products[0]) this.setProduct(products[0]);
 	    }
 	  }, {
 	    key: 'setProduct',
@@ -27592,7 +27601,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var initialState = {
-	  product: false,
 	  start: false,
 	  end: false,
 	  ridemap: false
@@ -27605,13 +27613,17 @@
 	  },
 	  REQUEST: function REQUEST(state, _ref2) {
 	    var payload = _ref2.payload;
-	    return (0, _extends3.default)({}, state, payload);
+	    return (0, _extends3.default)({}, state, {
+	      request_id: payload.request_id,
+	      status: payload.status,
+	      driver: payload.driver,
+	      eta: payload.eta,
+	      vehicle: payload.vehicle
+	    });
 	  },
 	  RIDEMAP: function RIDEMAP(state, _ref3) {
 	    var payload = _ref3.payload;
-	    return (0, _extends3.default)({}, state, {
-	      ridemap: payload
-	    });
+	    return (0, _extends3.default)({}, state, { ridemap: payload });
 	  }
 	}, initialState);
 
