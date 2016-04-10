@@ -8,7 +8,7 @@ require('babel-register');
 require('./src/server.js');
 
 menubar({
-  preload: true,
+  'preload-window': true,
   'show-dock-icon': true,
   icon: path.join(__dirname, '/public/icons/UberLogoTemplate.png'),
   transparent: true,
