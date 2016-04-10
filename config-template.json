@@ -7,6 +7,5 @@
   "UBER_API_ENDPOINT": "https://sandbox-api.uber.com",
   "CLIENT_ID": "",
   "CLIENT_SECRET": "",
-  "SESSION_SECRET": "",
-  "GA_UA": "UA-XXXXXX-X"
+  "SESSION_SECRET": ""
 }

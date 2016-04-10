@@ -19,24 +19,27 @@ export default class Form extends React.Component {
   }
 
   render() {
-    const order = this.props.order;
-    const products = this.props.products.cars;
-    const selectedProduct = _.find(
-      products,
-      ['product_id', order.product.product_id || products[0].product_id]
-    );
+    let selectedProduct = false;
+    let selectedPrice = false;
+    const { products, order } = this.props;
 
-    const prices = this.props.products.prices;
-    const selectedPrice = _.find(
-      prices,
-      ['product_id', order.product.product_id || products[0].product_id]
-    );
+    if (products.cars && products.cars[0]) {
+      selectedProduct = _.find(
+        products.cars,
+        ['product_id', order.product && order.product.product_id || products.cars[0].product_id]
+      );
+
+      selectedPrice = _.find(
+        products.prices,
+        ['product_id', order.product && order.product.product_id || products.cars[0].product_id]
+      );
+    }
 
     return (
       <form className="order" autoComplete="off" onSubmit={::this.handleSubmit}>
-        <SelectProduct products={products} />
+        <SelectProduct products={products.cars} />
         <AutoComplete />
-        <CountDown time={selectedProduct.estimate} pulse />
+        <CountDown time={selectedProduct.estimate || 0} pulse />
         { selectedPrice && <Estimate estimate={selectedPrice.estimate} /> }
 
         <div className="jawbone">

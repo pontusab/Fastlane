@@ -50,8 +50,16 @@ rate limit. This is not optimal but it works for now...
     ].join() + '{display:none!important;}');
 
     webview.insertCSS(
-      'header.contextual {position:fixed !important;} .wrapper {padding-top: 80px !important;}'
+      'header.contextual {position:fixed !important;} .wrapper {padding-top: 80px !important;} html {background: #000!important;}'
     );
+
+    // webview.addEventListener('page-title-updated', function(title, explicitSet) {
+    //   if (!explicitSet) {
+    //     setTimeout(() => {
+    //       webview.goBack();
+    //     }, 3000);
+    //   }
+    // });
 
     // webview.openDevTools();
   });

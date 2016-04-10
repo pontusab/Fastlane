@@ -24,7 +24,7 @@ export default class Search extends React.Component {
   componentDidMount() {
     // Move to state instead of localStorage
     const user = localStorage.getItem('user');
-    if (!user) setTimeout(() => window.location.replace('/start'), 3000);
+    if (!user) window.location.replace('/start');
 
     ::this.fetch();
   }
@@ -53,14 +53,13 @@ export default class Search extends React.Component {
   }
 
   render() {
-    const products = this.props.products.cars;
     return (
       <div className="order">
         {
-          products.length ?
-            this.getStateComponent()
+          this.props.products.loading ?
+            <Loading />
           :
-          <Loading />
+          this.getStateComponent()
         }
       </div>
     );

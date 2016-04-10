@@ -9,14 +9,7 @@ const initialState = {
 
 export default handleActions({
   ORDER: (state, { payload }) => ({ ...state, ...payload }),
-  REQUEST: (state, { payload }) => ({
-    ...state,
-    request_id: payload.request_id,
-    status: payload.status,
-    driver: payload.driver,
-    eta: payload.eta,
-    vehicle: payload.vehicle,
-  }),
+  REQUEST: (state, { payload }) => ({ ...state, ...payload }),
   RIDEMAP: (state, { payload }) => ({
     ...state,
     ridemap: payload,

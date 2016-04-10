@@ -6,12 +6,12 @@ export default class Confirm extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     order: React.PropTypes.object.isRequired,
-    ridemap: React.PropTypes.object.isRequired,
+    ridemap: React.PropTypes.object,
   };
 
   constructor() {
     super();
-    this.interval = setInterval(::this.poll, 5000);
+    this.interval = setInterval(::this.poll, 3000);
   }
 
   componentDidMount() {
@@ -55,7 +55,7 @@ export default class Confirm extends React.Component {
           </div>
 
           <div className="map">
-            <iframe className="map-frame" src={order.ridemap.href} />
+            { order.ridemap && <iframe className="map-frame" src={order.ridemap.href} /> }
           </div>
 
           <div className="arriving">
