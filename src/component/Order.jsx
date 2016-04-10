@@ -21,7 +21,8 @@ export default class Search extends React.Component {
     order: React.PropTypes.object.isRequired,
   };
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     // Move to state instead of localStorage
     const user = localStorage.getItem('user');
     if (!user) window.location.replace('/start');

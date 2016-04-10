@@ -16,7 +16,8 @@ export default class Auth extends React.Component {
     dispatch: React.PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const { code } = qs.parse(window.location.search);
     if (code) this.props.dispatch(authenticate(code));
   }
@@ -25,8 +26,7 @@ export default class Auth extends React.Component {
     if (user.error) return;
 
     localStorage.setItem('user', JSON.stringify(user));
-
-    setTimeout(() => window.location.replace('/'), 2000);
+    return window.location.replace('order');
   }
 
   render() {
