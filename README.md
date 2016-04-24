@@ -29,7 +29,7 @@ My contact information is located on my [Github profile](https://github.com/pont
 
 ## Author
 
-[![Pontus Abrahamsson](https://avatars2.githubusercontent.com/u/655158?v=3&u=60ff29b56ebe0343294ea2b55f9c0fd43a0d9341&s=140)](https://sindresorhus.com)
+[![Pontus Abrahamsson](https://avatars2.githubusercontent.com/u/655158?v=3&u=60ff29b56ebe0343294ea2b55f9c0fd43a0d9341&s=140)](https://twitter.com/pontusab)
 
 [Pontus Abrahamsson](https://twitter.com/pontusab)
 
